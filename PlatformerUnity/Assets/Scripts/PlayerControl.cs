@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerControl : MonoBehaviour
 {
     public GameObject player;
+
+    public rigidbody Rigidbody;
+
     // Start is called before the first frame update
     void Start()
     {
