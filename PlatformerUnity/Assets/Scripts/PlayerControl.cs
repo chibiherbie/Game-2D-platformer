@@ -12,9 +12,6 @@ public class PlayerControl : MonoBehaviour
 
     public int JumpSpeed;
     public bool Jumping;
-
-    Vector3 destinationPoint;
-float smoothing;
     
     
     // Start is called before the first frame update
