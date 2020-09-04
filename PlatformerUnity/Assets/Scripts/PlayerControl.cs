@@ -26,11 +26,11 @@ public class PlayerControl : MonoBehaviour
         {
             rb.MovePosition(transform.position - transform.forward * speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.D))
         {
             rb.MovePosition(transform.position + transform.right * speed * Time.deltaTime);
         }
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.A))
         {
             rb.MovePosition(transform.position - transform.right * speed * Time.deltaTime);
         }
