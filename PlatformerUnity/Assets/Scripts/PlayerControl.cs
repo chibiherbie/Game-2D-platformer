@@ -26,7 +26,10 @@ float smoothing;
     // Update is called once per frame
     void FixedUpdate()
     {
-       transform.position = Vector3.Lerp (transform.position, destinationPoint, smoothing * Time.deltaTime);
+        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
+        var direction = new Vector3(h, v);  
+        rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
