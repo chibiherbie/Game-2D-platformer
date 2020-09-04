@@ -4,35 +4,45 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    public GameObject platform;
     public GameObject player;
 
     public Rigidbody rb;
     public int speed;
 
+    public int JumpSpeed;
+    public bool Jumping;
+
+    Vector3 destinationPoint;
+float smoothing;
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-    }
+    }   
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.W))
+       transform.position = Vector3.Lerp (transform.position, destinationPoint, smoothing * Time.deltaTime);
+        
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.MovePosition(transform.position + transform.forward * speed * Time.deltaTime);
+            if (Jumping == false)
+            {
+                Jumping = true;
+                rb.AddForce(player.transform.up * JumpSpeed, ForceMode.Impulse);
+            }
         }
-        if (Input.GetKey(KeyCode.S))
+
+    }
+    void OnCollisionEnter(Collision collis)
+    {
+        if (collis.gameObject == platform)
         {
-            rb.MovePosition(transform.position - transform.forward * speed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            rb.MovePosition(transform.position + transform.right * speed * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            rb.MovePosition(transform.position - transform.right * speed * Time.deltaTime);
+            Jumping = false;
         }
     }
 }
