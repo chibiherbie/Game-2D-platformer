@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -11,10 +12,11 @@ public class PlayerControl : MonoBehaviour
     public int speed;
     public int JumpSpeed;
     public bool Jumping;
-    float health;
+    public float health;
     public float damage;
     public int currentWeapon;
     public List<float> weaponList;
+    public Slider hpbar;
     //public float[] weaponList = new float[10];
 
     // Start is called before the first frame update
@@ -30,10 +32,10 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {   
         // передвижение персонажа
-        float v = Input.GetAxis("Vertical");
-        float h = Input.GetAxis("Horizontal");
-        var direction = new Vector3(h, v);  
-        rb.MovePosition(rb.position + direction * speed * Time.deltaTime);
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+        var v = new Vector3(x, 0.0f, z);
+        transform.position += v * speed * Time.deltaTime;   
         
         // прыжок персонажа
         if (Input.GetKeyDown(KeyCode.Space))
@@ -44,6 +46,9 @@ public class PlayerControl : MonoBehaviour
                 rb.AddForce(player.transform.up * JumpSpeed, ForceMode.Impulse);
             }
         }
+
+        //отображение жизней персонажа
+        hpbar.value = health;
     }
 
     void OnCollisionEnter(Collision collis)
