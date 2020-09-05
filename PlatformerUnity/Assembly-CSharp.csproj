@@ -36,10 +36,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Cam.cs" />
-     <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\AI.cs" />
+     <Compile Include="Assets\Scripts\Cam.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemies.cs" />
+     <Compile Include="Assets\Scripts\PlayerControl.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

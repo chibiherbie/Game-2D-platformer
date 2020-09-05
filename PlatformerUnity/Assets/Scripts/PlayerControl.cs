@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject platform;
     public GameObject player;
     public Rigidbody rb;
-
+    public Transform pointForWeapon;
     public int speed;
     public float health;
     public float damage;
@@ -16,8 +16,9 @@ public class PlayerControl : MonoBehaviour
     public List<float> weaponList;
     public Slider hpbar;
     bool is_ground = false; // на земле ли игрок
-    public float force = 6;
+    public float force = 5;
     //public float[] weaponList = new float[10];
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +42,7 @@ public class PlayerControl : MonoBehaviour
         hpbar.value = health;
     }
 
+
     private void OnTriggerStay(Collider other) {
         // атака врага
         if (other.tag == "Enemies") {
@@ -51,11 +53,22 @@ public class PlayerControl : MonoBehaviour
 
         // подбор оружия
         if (other.tag == "weapon") {
+            // отоброжение характеристик
+            
+
             if (Input.GetKeyDown(KeyCode.E)) {
+                
+                // смена оружия
+                if (currentWeapon != 0) {
+                    //lastname.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                }
+
                 currentWeapon = int.Parse(other.name);
-                for (int i=0; i < 10;i++)
+                for (int i=0; i < 10; i++)
                 {
                     if (i == currentWeapon) {
+                        other.transform.parent = pointForWeapon;
+                        other.transform.position = pointForWeapon.position;
                         damage = weaponList[i];
                         break;
                     }
@@ -69,7 +82,9 @@ public class PlayerControl : MonoBehaviour
     }
     
      void OnTriggerExit(Collider col){              //если из триггера что то вышло и у обьекта тег "ground"
-        if (col.tag == "ground") is_ground = false;     //то вЫключаем переменную "на земле"
+        if (col.tag == "ground") {
+            is_ground = false;
+        }     //то выключаем переменную "на земле"
     }
 
     void Update() {
