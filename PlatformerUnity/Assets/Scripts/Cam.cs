@@ -23,7 +23,7 @@ public class Cam : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {   
         // левая сторона экрана
         if (player.transform.position.x - gameObject.transform.position.x <= -6f) {

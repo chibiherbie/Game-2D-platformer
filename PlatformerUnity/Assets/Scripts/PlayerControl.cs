@@ -10,13 +10,13 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody rb;
 
     public int speed;
-    public int JumpSpeed;
-    public bool Jumping;
     public float health;
     public float damage;
     public int currentWeapon;
     public List<float> weaponList;
     public Slider hpbar;
+    bool is_ground = false; // на земле ли игрок
+    public float force = 6;
     //public float[] weaponList = new float[10];
 
     // Start is called before the first frame update
@@ -36,27 +36,9 @@ public class PlayerControl : MonoBehaviour
         float z = Input.GetAxis("Vertical");
         var v = new Vector3(x, 0.0f, z);
         transform.position += v * speed * Time.deltaTime;   
-        
-        // прыжок персонажа
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (Jumping == false)
-            {
-                Jumping = true;
-                rb.AddForce(player.transform.up * JumpSpeed, ForceMode.Impulse);
-            }
-        }
 
         //отображение жизней персонажа
         hpbar.value = health;
-    }
-
-    void OnCollisionEnter(Collision collis)
-    {
-        if (collis.gameObject == platform)
-        {
-            Jumping = false;
-        }
     }
 
     private void OnTriggerStay(Collider other) {
@@ -79,6 +61,20 @@ public class PlayerControl : MonoBehaviour
                     }
                 }
             }
+        }
+
+        if (other.tag == "ground"){  //если в тригере что то есть и у обьекта тег "ground"
+            is_ground = true; //то включаем переменную "на земле"
+            }   
+    }
+    
+     void OnTriggerExit(Collider col){              //если из триггера что то вышло и у обьекта тег "ground"
+        if (col.tag == "ground") is_ground = false;     //то вЫключаем переменную "на земле"
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Space) & is_ground) {        //если нажата кнопка "пробел" и игрок на земле
+            rb.AddForce(Vector3.up * force, ForceMode.Impulse);   //то придаем ему силу вверх импульсным пинком
         }
     }
 }
