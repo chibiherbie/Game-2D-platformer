@@ -72,6 +72,11 @@ MonoBehaviour:
   agent: {fileID: 0}
   health: 0
   coin: {fileID: 2986724447147879652, guid: db24ba3f41da56446a3768c2837a2485, type: 3}
+  jar: {fileID: 0}
+  jars:
+  - {fileID: 3004772037823730671, guid: ec9e239ca450f3144ab2b32d25978576, type: 3}
+  - {fileID: 3013485579152244214, guid: a9ac6f69ef223fa4287e3dff9b1e38ca, type: 3}
+  - {fileID: 7773900484218816247, guid: bbe8708feb1553e4c88f5941e4bdc94a, type: 3}
 --- !u!65 &8123536556680279452
 BoxCollider:
   m_ObjectHideFlags: 0

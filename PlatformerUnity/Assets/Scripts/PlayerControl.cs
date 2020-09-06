@@ -22,6 +22,7 @@ public class PlayerControl : MonoBehaviour
     float pickDelay = 0;
     public int countCoin = 0;
     public Text coinValue;
+    
 
 
     // Start is called before the first frame update
@@ -39,7 +40,7 @@ public class PlayerControl : MonoBehaviour
     void FixedUpdate()
     {   
         coinValue.text = countCoin.ToString();
-    
+
         // передвижение персонажа
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");

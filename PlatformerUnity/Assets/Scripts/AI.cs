@@ -12,8 +12,10 @@ public class AI : MonoBehaviour
     float attackSped = 1;
     float atakDelay = 1;
     float damage = 10;
-    int randomNumber;
+    int randomJars;
     public GameObject coin;
+    public GameObject jar;
+    public List<GameObject> jars; 
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +35,19 @@ public class AI : MonoBehaviour
         // уничтоение врага
         if (health <= 0) {
 
-            randomNumber = Random.Range(0, 10);
+            // рандомное выпадение бафов
+            if (Random.Range(0, 100) <= 90){
+                randomJars = Random.Range(0, 3);
+                jar = jars[randomJars];
+                Instantiate(jar, new Vector3(gameObject.transform.position.x + Random.Range(0.4f, 1.9f), gameObject.transform.position.y+1, gameObject.transform.position.z + Random.Range(0.4f, 1.9f)), jar.transform.rotation);
+            }
 
-            for (int i  = randomNumber; i < 10; i++)
+            // выпадение рандомное кол-во монет
+            for (int i  = Random.Range(0, 10); i < 10; i++)
             {
                 Instantiate(coin, new Vector3(gameObject.transform.position.x + Random.Range(0.4f, 1.9f), gameObject.transform.position.y+1, gameObject.transform.position.z + Random.Range(0.4f, 1.9f)), coin.transform.rotation);
             }
+
             Destroy(gameObject);
         }
 
