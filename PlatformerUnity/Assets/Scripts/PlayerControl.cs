@@ -28,7 +28,10 @@ public class PlayerControl : MonoBehaviour
     public Sprite speedJar;
     public Sprite attackJar;
     public Text currentJarsValue;
+    bool timeJar;
+    float timeJarSec = 15;
     float usingJarDelay=0;
+    string nameJar;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +44,17 @@ public class PlayerControl : MonoBehaviour
         currentJarsValue.text = countJar[0].ToString();
         checkW = false;
     }   
+
+    void TimeJar(string name){
+        // таймер для бафа банок
+        if (timeJarSec >= 0){
+            timeJarSec -= 1 * Time.deltaTime;
+        }
+
+        else {
+             
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -56,6 +70,9 @@ public class PlayerControl : MonoBehaviour
         //отображение жизней персонажа
         hpbar.value = health;
 
+        //
+        TimeJar(nameJar);
+
         // задержкжа для подбора оружия и атаки
         if (checkW && pickDelay > 0)
         {
@@ -66,10 +83,14 @@ public class PlayerControl : MonoBehaviour
         {
             checkW = false;
         }
+
+        // pзадержка для использовния банок
         if(usingJarDelay > 0)
         {
             usingJarDelay -= 1 * Time.deltaTime;
         }
+     
+
         if(currentJar.sprite == hpJar)
         {
             currentJarsValue.text = countJar[0].ToString();
@@ -78,12 +99,16 @@ public class PlayerControl : MonoBehaviour
                 usingJarDelay = 1;
                 health += 25;
                 countJar[0]--;
+
+                timeJar = true;
+                
             }
         }
+
         if(currentJar.sprite == attackJar)
         {
             currentJarsValue.text = countJar[1].ToString();
-            currentJarsValue.text = countJar[0].ToString();
+            
             if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[1] >= 1)
             {
                 usingJarDelay = 1;
@@ -91,25 +116,30 @@ public class PlayerControl : MonoBehaviour
                 countJar[1]--;
             }
         }
+
         if(currentJar.sprite == speedJar)
         {
             currentJarsValue.text = countJar[2].ToString();
-            currentJarsValue.text = countJar[0].ToString();
+            
             if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[2] >= 1)
             {
                 usingJarDelay = 1;
-                speed += 10;
+                speed += 2;
                 countJar[2]--;
             }
         }
+
+        // использовния банок
         if(Input.GetKey(KeyCode.Alpha1))
         {
             currentJar.sprite = hpJar;
         }
+
         if(Input.GetKey(KeyCode.Alpha2))
         {
             currentJar.sprite = speedJar;
         }
+
         if(Input.GetKey(KeyCode.Alpha3))
         {
             currentJar.sprite = attackJar;

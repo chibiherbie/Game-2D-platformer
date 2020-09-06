@@ -32,7 +32,6 @@ public class CollectJar : MonoBehaviour
             if (gameObject.name == "jarAttack" || gameObject.name == "jarAttack(Clone)") {
                 other.GetComponent<PlayerControl>().countJar[2]++;
             }
-            //other.GetComponent<PlayerControl>().countCoin += 1;
             Destroy(gameObject);
         }
     }
