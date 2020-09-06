@@ -7,6 +7,7 @@ public class PlayerControl : MonoBehaviour
 {
     public GameObject platform;
     public GameObject player;
+    GameObject weaponNow;
     public Rigidbody rb;
     public Transform pointForWeapon;
     public int speed;
@@ -52,15 +53,13 @@ public class PlayerControl : MonoBehaviour
         }
 
         // подбор оружия
-        if (other.tag == "weapon") {
+        if (other.CompareTag("weapon") && Input.GetKeyDown(KeyCode.E)) {
             // отоброжение характеристик
-            
-
-            if (Input.GetKeyDown(KeyCode.E)) {
                 
                 // смена оружия
                 if (currentWeapon != 0) {
-                    //lastname.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                    weaponNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                    weaponNow.transform.parent = null;
                 }
 
                 currentWeapon = int.Parse(other.name);
@@ -70,11 +69,11 @@ public class PlayerControl : MonoBehaviour
                         other.transform.parent = pointForWeapon;
                         other.transform.position = pointForWeapon.position;
                         damage = weaponList[i];
+                        weaponNow = other.gameObject; 
                         break;
                     }
                 }
             }
-        }
 
         if (other.tag == "ground"){  //если в тригере что то есть и у обьекта тег "ground"
             is_ground = true; //то включаем переменную "на земле"
