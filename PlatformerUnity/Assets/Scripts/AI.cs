@@ -12,8 +12,8 @@ public class AI : MonoBehaviour
     float attackSped = 1;
     float atakDelay = 1;
     float damage = 10;
-
-
+    int randomChislo;
+    public GameObject coin;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,11 @@ public class AI : MonoBehaviour
 
         // уничтоение врага
         if (health <= 0) {
+            randomChislo = Random.Range(0, 100);
+            if(randomChislo <= 50)
+            {
+                Instantiate(coin, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y+1, gameObject.transform.position.z), coin.transform.rotation);
+            }
             Destroy(gameObject);
         }
 

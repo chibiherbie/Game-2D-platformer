@@ -71,6 +71,7 @@ MonoBehaviour:
   goal: {fileID: 0}
   agent: {fileID: 0}
   health: 0
+  coin: {fileID: 2986724447147879652, guid: db24ba3f41da56446a3768c2837a2485, type: 3}
 --- !u!65 &8123536556680279452
 BoxCollider:
   m_ObjectHideFlags: 0
