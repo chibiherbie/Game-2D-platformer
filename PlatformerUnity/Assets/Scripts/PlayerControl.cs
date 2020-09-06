@@ -22,7 +22,7 @@ public class PlayerControl : MonoBehaviour
     float pickDelay = 0;
     public int countCoin = 0;
     public Text coinValue;
-    
+    public List<int> countJar;
 
 
     // Start is called before the first frame update

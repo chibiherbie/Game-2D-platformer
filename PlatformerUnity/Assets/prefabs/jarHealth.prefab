@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4082401624036800515}
   - component: {fileID: 9093346658560295590}
   - component: {fileID: 5810106593789005486}
+  - component: {fileID: -6415093364520039352}
   m_Layer: 0
   m_Name: jarHealth
   m_TagString: Untagged
@@ -96,3 +97,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 18.02, y: 17.1, z: 5.5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-6415093364520039352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3013485579152244214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5832377297b98b4b950a5ab3dd8ebfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

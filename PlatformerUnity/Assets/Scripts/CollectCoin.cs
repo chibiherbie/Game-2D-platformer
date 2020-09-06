@@ -25,5 +25,11 @@ public class CollectCoin : MonoBehaviour
             other.GetComponent<PlayerControl>().countCoin += 1;
             Destroy(gameObject);
         }
+
+        if (other.CompareTag("Player") && !isPicked) {
+            isPicked = true;
+            //other.GetComponent<PlayerControl>().countCoin += 1;
+            Destroy(gameObject);
+        }
     }
 }
