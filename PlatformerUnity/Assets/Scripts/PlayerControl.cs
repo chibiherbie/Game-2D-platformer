@@ -23,7 +23,12 @@ public class PlayerControl : MonoBehaviour
     public int countCoin = 0;
     public Text coinValue;
     public List<int> countJar;
-
+    public Image currentJar;
+    public Sprite hpJar;
+    public Sprite speedJar;
+    public Sprite attackJar;
+    public Text currentJarsValue;
+    float usingJarDelay=0;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +37,8 @@ public class PlayerControl : MonoBehaviour
 
         health = 100f;
         damage = 5f;
-
+        currentJar.sprite = hpJar;
+        currentJarsValue.text = countJar[0].ToString();
         checkW = false;
     }   
 
@@ -59,6 +65,54 @@ public class PlayerControl : MonoBehaviour
         else if(checkW && pickDelay <= 0)
         {
             checkW = false;
+        }
+        if(usingJarDelay > 0)
+        {
+            usingJarDelay -= 1 * Time.deltaTime;
+        }
+        if(currentJar.sprite == hpJar)
+        {
+            currentJarsValue.text = countJar[0].ToString();
+            if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[0] >= 1)
+            {
+                usingJarDelay = 1;
+                health += 25;
+                countJar[0]--;
+            }
+        }
+        if(currentJar.sprite == attackJar)
+        {
+            currentJarsValue.text = countJar[1].ToString();
+            currentJarsValue.text = countJar[0].ToString();
+            if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[1] >= 1)
+            {
+                usingJarDelay = 1;
+                damage += 10;
+                countJar[1]--;
+            }
+        }
+        if(currentJar.sprite == speedJar)
+        {
+            currentJarsValue.text = countJar[2].ToString();
+            currentJarsValue.text = countJar[0].ToString();
+            if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[2] >= 1)
+            {
+                usingJarDelay = 1;
+                speed += 10;
+                countJar[2]--;
+            }
+        }
+        if(Input.GetKey(KeyCode.Alpha1))
+        {
+            currentJar.sprite = hpJar;
+        }
+        if(Input.GetKey(KeyCode.Alpha2))
+        {
+            currentJar.sprite = speedJar;
+        }
+        if(Input.GetKey(KeyCode.Alpha3))
+        {
+            currentJar.sprite = attackJar;
         }
     }
 
