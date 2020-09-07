@@ -42,7 +42,8 @@ public class PlayerControl : MonoBehaviour
     public TextMesh textHealth;
     public Slider speedbar;
     public Slider attackbar;
-    
+    public GameObject menuPanel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +60,12 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {   
+        if (Input.GetKey(KeyCode.Escape)){
+            menuPanel.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+
         coinValue.text = countCoin.ToString();
 
         // передвижение персонажа
@@ -278,7 +285,6 @@ public class PlayerControl : MonoBehaviour
         if (other.tag == "Enemies") {
             if (Input.GetKey(KeyCode.F)) {
                 if (!checkW ) {
-
                     checkW = true;
                     // задержка атаки
                     pickDelay = 0.5f;
