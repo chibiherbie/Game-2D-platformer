@@ -111,8 +111,11 @@ public class PlayerControl : MonoBehaviour
             if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[0] >= 1)
             {
                 usingJarDelay = 1;
-                health += 40;
+                health += 35;
                 countJar[0]--;
+
+                // вывод, сколько прибавилось 
+                Debug.Log("35+");
             }
         }
 
@@ -135,6 +138,8 @@ public class PlayerControl : MonoBehaviour
 
                 else { // вывод, что вторую использовать сразу нельзя
                     usingJarDelay = 1;
+
+                    // вывод, сколько прибавилось 
                     Debug.Log("исп");
                 }
             }
@@ -157,6 +162,8 @@ public class PlayerControl : MonoBehaviour
 
                 else { // вывод, что вторую использовать сразу нельзя
                     usingJarDelay = 1;
+                    
+                    // вывод, сколько прибавилось 
                     Debug.Log("исп");
                 }
             }   
@@ -177,7 +184,7 @@ public class PlayerControl : MonoBehaviour
         {
             currentJar.sprite = attackJar;
         }
-        // использовния банок
+        // /использовния банок
     }
 
 
@@ -200,7 +207,6 @@ public class PlayerControl : MonoBehaviour
         // подбор оружия
         if (other.CompareTag("weapon") && Input.GetKey(KeyCode.E)){
             // отоброжение характеристик
-
 
                 
             if (!checkW) {

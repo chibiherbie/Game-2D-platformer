@@ -8,6 +8,7 @@ TagManager:
   - Enemies
   - weapon
   - coin
+  - damageForBot
   layers:
   - Default
   - TransparentFX

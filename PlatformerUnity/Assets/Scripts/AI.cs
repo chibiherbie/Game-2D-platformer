@@ -9,19 +9,25 @@ public class AI : MonoBehaviour
     public NavMeshAgent agent;
     GameObject player;
     public float health;
+    float lastHealth;
     float attackSped = 1;
     float atakDelay = 1;
+    float timeDamage = 1;
+    bool timeDamageForBot;
     float damage = 10;
     int randomJars;
     public GameObject coin;
     public GameObject jar;
+    public GameObject damageForBot;
     public List<GameObject> jars; 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
+
         health = 100f;
+        lastHealth = 100f;
     }
 
 
@@ -50,6 +56,16 @@ public class AI : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        if (health < lastHealth) {
+            lastHealth = health;
+            Instantiate(damageForBot, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 3, gameObject.transform.position.z + 1), damageForBot.transform.rotation);
+            
+            Destroy(damageForBot);
+        }
+
+        // задержка до исчезвнавения урона
+        
 
         // задержка атаки
         if(atakDelay <= attackSped)
