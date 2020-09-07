@@ -36,11 +36,15 @@ public class PlayerControl : MonoBehaviour
     string nameJar;
     bool isRight = true;
     public float distantionThrow = 15f;
+    Transform _transform;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        _transform = GetComponent<Transform>();
 
         health = 100f;
         damage = 5f;
@@ -206,26 +210,47 @@ public class PlayerControl : MonoBehaviour
         Debug.DrawRay(pointForWeapon.transform.position, pointForWeapon.transform.right * distantionThrow, Color.red);
 
         // бросок оружия
-        if (Input.GetKey(KeyCode.G)){
+        if (Input.GetKey(KeyCode.G) && is_ground){
             if (currentWeapon != 0) {
-                currentWeapon = 0;
-                damage = 5;
                 
                 if (isRight) {
                     Ray ray = new Ray(pointForWeapon.transform.position, pointForWeapon.transform.right * distantionThrow);
                     RaycastHit hit;
+                    
+                    weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
+                    weaponNow.transform.parent = null;
+
                     if (Physics.Raycast(ray, out hit)){
                         if (hit.transform.CompareTag("Enemies")){
-                            
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
+                            hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
+                        }
+                        else {
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 0.5f, hit.transform.position.z);
                         }
                     }
                 }
                 else {
-                    Ray ray = new Ray(pointForWeapon.transform.position, pointForWeapon.transform.right * -distantionThrow);
+                    Ray ray = new Ray(pointForWeapon.transform.position, -pointForWeapon.transform.right * distantionThrow);
+                    RaycastHit hit;
+                    
+                    weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
+                    weaponNow.transform.parent = null;
+
+                    if (Physics.Raycast(ray, out hit)){
+                        if (hit.transform.CompareTag("Enemies")){
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
+                            hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
+                        }
+                        else {
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 0.5f, hit.transform.position.z);
+                        }
+                    }
 
                 }
                 
-
+            damage = 5;
+            currentWeapon = 0;
             } 
         }
     }
@@ -256,6 +281,8 @@ public class PlayerControl : MonoBehaviour
             // смена оружия
                 if (currentWeapon != 0) {
                     weaponNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                    // кручение оружия
+                    //weaponNow.transform.localScale = other.transform.localScale;
                     weaponNow.transform.parent = null;
                 }
 
@@ -266,11 +293,31 @@ public class PlayerControl : MonoBehaviour
                 for (int i=0; i < 10; i++)
                 {
                     if (i == currentWeapon) {
-                        other.transform.parent = pointForWeapon;
-                        other.transform.position = pointForWeapon.position;
-                        damage = weaponList[i];
-                        weaponNow = other.gameObject; 
-                        break;
+                        if (isRight) {
+
+                            Vector3 theScale = other.transform.localScale;
+                            theScale.x *= -1;
+                            other.transform.localScale = theScale;
+
+                            other.transform.parent = pointForWeapon;
+                            other.transform.position = pointForWeapon.position;
+                            damage = weaponList[i];
+                            weaponNow = other.gameObject; 
+                            break;
+                        }
+                        else {
+                            
+                            Vector3 theScale = other.transform.localScale;
+                            theScale.x *= -1;
+                            other.transform.localScale = theScale;
+
+                            other.transform.parent = pointForWeapon;
+                            other.transform.position = pointForWeapon.position;
+                            damage = weaponList[i];
+                            weaponNow = other.gameObject; 
+                            break;
+                        }
+                        
                     }
                 }
             }
