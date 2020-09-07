@@ -35,6 +35,7 @@ public class PlayerControl : MonoBehaviour
     float usingJarDelay=0;
     string nameJar;
     bool isRight = true;
+    public float distantionThrow = 15f;
 
     // Start is called before the first frame update
     void Start()
@@ -200,15 +201,30 @@ public class PlayerControl : MonoBehaviour
         {
             currentJar.sprite = attackJar;
         }
-        // /использовния банок
 
+        // линия, кудакидается оружие
+        Debug.DrawRay(pointForWeapon.transform.position, pointForWeapon.transform.right * distantionThrow, Color.red);
 
         // бросок оружия
         if (Input.GetKey(KeyCode.G)){
             if (currentWeapon != 0) {
                 currentWeapon = 0;
                 damage = 5;
+                
+                if (isRight) {
+                    Ray ray = new Ray(pointForWeapon.transform.position, pointForWeapon.transform.right * distantionThrow);
+                    RaycastHit hit;
+                    if (Physics.Raycast(ray, out hit)){
+                        if (hit.transform.CompareTag("Enemies")){
+                            
+                        }
+                    }
+                }
+                else {
+                    Ray ray = new Ray(pointForWeapon.transform.position, pointForWeapon.transform.right * -distantionThrow);
 
+                }
+                
 
             } 
         }
