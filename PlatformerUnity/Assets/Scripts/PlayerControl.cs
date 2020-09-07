@@ -144,7 +144,7 @@ public class PlayerControl : MonoBehaviour
 
                 textHealth.text = "+35 хп";
                 // вывод, сколько прибавилось 
-                Instantiate(textHealth, new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textHealth.transform.rotation);
+                Instantiate(textHealth, new Vector3(gameObject.transform.position.x - 1 , gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textHealth.transform.rotation);
             }
         }
 
