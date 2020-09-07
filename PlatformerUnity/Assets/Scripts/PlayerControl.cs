@@ -36,15 +36,15 @@ public class PlayerControl : MonoBehaviour
     string nameJar;
     bool isRight = true;
     public float distantionThrow = 15f;
-    Transform _transform;
+    public TextMesh textSpeed;
+    public TextMesh textAttack;
+    public TextMesh textHealth;
     
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        _transform = GetComponent<Transform>();
 
         health = 100f;
         damage = 5f;
@@ -119,7 +119,7 @@ public class PlayerControl : MonoBehaviour
             checkW = false;
         }
 
-        // pзадержка для использовния банок
+        // задержка для использовния банок
         if(usingJarDelay > 0)
         {
             usingJarDelay -= 1 * Time.deltaTime;
@@ -135,8 +135,9 @@ public class PlayerControl : MonoBehaviour
                 health += 35;
                 countJar[0]--;
 
+                textHealth.text = "+35 хп";
                 // вывод, сколько прибавилось 
-                Debug.Log("35+");
+                Instantiate(textHealth, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textHealth.transform.rotation);
             }
         }
 
@@ -154,14 +155,18 @@ public class PlayerControl : MonoBehaviour
                     speed += 2;
                     countJar[1]--;
 
+                    textSpeed.text = "+2 к скорости";
+                    // вывод, сколько прибавилось
+                    Instantiate(textSpeed, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textSpeed.transform.rotation);
+
                     timeJarSpeed = true;
                 } 
 
                 else { // вывод, что вторую использовать сразу нельзя
                     usingJarDelay = 1;
 
-                    // вывод, сколько прибавилось 
-                    Debug.Log("исп");
+                    textSpeed.text = "Рано";
+                    Instantiate(textSpeed, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textSpeed.transform.rotation);
                 }
             }
         }
@@ -178,14 +183,19 @@ public class PlayerControl : MonoBehaviour
                     damageJar += 10;
                     countJar[2]--;
 
+                    textAttack.text = "+10 к атаке";
+                    // вывод, сколько прибавилось
+                    Instantiate(textAttack, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textAttack.transform.rotation);
+
                     timeJarAttack = true;
                 }
 
                 else { // вывод, что вторую использовать сразу нельзя
                     usingJarDelay = 1;
-                    
-                    // вывод, сколько прибавилось 
-                    Debug.Log("исп");
+                     
+                    textAttack.text = "Рано";
+                    Instantiate(textAttack, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textAttack.transform.rotation);
+
                 }
             }   
         }
