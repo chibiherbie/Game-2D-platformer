@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class AI : MonoBehaviour
 {
@@ -20,12 +21,13 @@ public class AI : MonoBehaviour
     public GameObject jar;
     public GameObject damageForBot;
     public List<GameObject> jars; 
+    public TextMesh damageBotText;
+    float demageHealth;
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-
         health = 100f;
         lastHealth = 100f;
     }
@@ -58,10 +60,12 @@ public class AI : MonoBehaviour
         }
 
         if (health < lastHealth) {
+            demageHealth = lastHealth - health;
+            damageBotText.text = demageHealth.ToString();
             lastHealth = health;
-            Instantiate(damageForBot, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 3, gameObject.transform.position.z + 1), damageForBot.transform.rotation);
             
-            Destroy(damageForBot);
+            Instantiate(damageBotText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 3, gameObject.transform.position.z + 1), damageBotText.transform.rotation);
+            
         }
 
         // задержка до исчезвнавения урона
