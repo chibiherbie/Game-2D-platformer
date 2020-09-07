@@ -31,7 +31,8 @@ public class PlayerControl : MonoBehaviour
     public Text currentJarsValue;
     bool timeJarSpeed = false;
     bool timeJarAttack = false;
-    float timeJarSec = 15;
+    float timeJarSecS = 15;
+    float timeJarSecA = 15;
     float usingJarDelay=0;
     string nameJar;
     bool isRight = true;
@@ -39,6 +40,8 @@ public class PlayerControl : MonoBehaviour
     public TextMesh textSpeed;
     public TextMesh textAttack;
     public TextMesh textHealth;
+    public Slider speedbar;
+    public Slider attackbar;
     
 
     // Start is called before the first frame update
@@ -83,28 +86,32 @@ public class PlayerControl : MonoBehaviour
         hpbar.value = health;
 
         // таймер для скорости
-        if (timeJarSpeed && timeJarSec > 0)
+        if (timeJarSpeed && timeJarSecS > 0)
         {
-            timeJarSec -= 1 * Time.deltaTime;
+            timeJarSecS -= 1 * Time.deltaTime;
+
+            speedbar.value = timeJarSecS;
         }
 
-        else if(timeJarSpeed && timeJarSec <= 0)
+        else if(timeJarSpeed && timeJarSecS <= 0)
         {
             timeJarSpeed = false;
-            timeJarSec = 15;
+            timeJarSecS = 15;
             speed -= 2;
         }
 
         // таймер для атаки
-        if (timeJarAttack && timeJarSec > 0)
+        if (timeJarAttack && timeJarSecA > 0)
         {
-            timeJarSec -= 1 * Time.deltaTime;
+            timeJarSecA -= 1 * Time.deltaTime;
+
+            attackbar.value = timeJarSecA;
         }
 
-        else if(timeJarAttack && timeJarSec <= 0)
+        else if(timeJarAttack && timeJarSecA <= 0)
         {
             timeJarAttack = false;
-            timeJarSec = 15;
+            timeJarSecA = 15;
             damageJar = 0;
         }
 
@@ -137,7 +144,7 @@ public class PlayerControl : MonoBehaviour
 
                 textHealth.text = "+35 хп";
                 // вывод, сколько прибавилось 
-                Instantiate(textHealth, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textHealth.transform.rotation);
+                Instantiate(textHealth, new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textHealth.transform.rotation);
             }
         }
 
@@ -157,7 +164,7 @@ public class PlayerControl : MonoBehaviour
 
                     textSpeed.text = "+2 к скорости";
                     // вывод, сколько прибавилось
-                    Instantiate(textSpeed, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textSpeed.transform.rotation);
+                    Instantiate(textSpeed, new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textSpeed.transform.rotation);
 
                     timeJarSpeed = true;
                 } 
@@ -166,7 +173,7 @@ public class PlayerControl : MonoBehaviour
                     usingJarDelay = 1;
 
                     textSpeed.text = "Рано";
-                    Instantiate(textSpeed, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textSpeed.transform.rotation);
+                    Instantiate(textSpeed, new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textSpeed.transform.rotation);
                 }
             }
         }
@@ -185,7 +192,7 @@ public class PlayerControl : MonoBehaviour
 
                     textAttack.text = "+10 к атаке";
                     // вывод, сколько прибавилось
-                    Instantiate(textAttack, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textAttack.transform.rotation);
+                    Instantiate(textAttack, new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textAttack.transform.rotation);
 
                     timeJarAttack = true;
                 }
@@ -194,7 +201,7 @@ public class PlayerControl : MonoBehaviour
                     usingJarDelay = 1;
                      
                     textAttack.text = "Рано";
-                    Instantiate(textAttack, new Vector3(gameObject.transform.position.x - 0.5f, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textAttack.transform.rotation);
+                    Instantiate(textAttack, new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textAttack.transform.rotation);
 
                 }
             }   

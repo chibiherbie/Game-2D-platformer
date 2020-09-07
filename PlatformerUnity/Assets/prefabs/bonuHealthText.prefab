@@ -57,11 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6764094802805676668, guid: fab7ffa2cfc70c6498c2f5a9a4569b0b, type: 3}
       propertyPath: m_Text
-      value: "\u0420\u0430\u043D\u043E"
+      value: "+35 \u0445\u043F"
       objectReference: {fileID: 0}
     - target: {fileID: 6764094802805676668, guid: fab7ffa2cfc70c6498c2f5a9a4569b0b, type: 3}
       propertyPath: m_Color.rgba
-      value: 4278192639
+      value: 4278190316
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fab7ffa2cfc70c6498c2f5a9a4569b0b, type: 3}
