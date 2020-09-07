@@ -9,6 +9,7 @@ TagManager:
   - weapon
   - coin
   - damageForBot
+  - wall
   layers:
   - Default
   - TransparentFX

@@ -2928,7 +2928,7 @@ GameObject:
   - component: {fileID: 1734279562}
   m_Layer: 0
   m_Name: wall_L
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8
@@ -3677,7 +3677,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
+    m_FontSize: 29
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3711,7 +3711,7 @@ GameObject:
   - component: {fileID: 2138841517}
   m_Layer: 0
   m_Name: wall_R
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
   m_StaticEditorFlags: 8

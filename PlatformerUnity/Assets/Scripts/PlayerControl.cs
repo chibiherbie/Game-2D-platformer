@@ -285,6 +285,7 @@ public class PlayerControl : MonoBehaviour
         if (other.tag == "Enemies") {
             if (Input.GetKey(KeyCode.F)) {
                 if (!checkW ) {
+
                     checkW = true;
                     // задержка атаки
                     pickDelay = 0.5f;
