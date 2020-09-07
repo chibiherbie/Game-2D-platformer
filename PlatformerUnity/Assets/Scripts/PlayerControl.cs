@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     public int speed;
     public float health;
     public float damage;
+    int damageJar = 0;
     public int currentWeapon;
     public List<float> weaponList;
     public Slider hpbar;
@@ -28,7 +29,8 @@ public class PlayerControl : MonoBehaviour
     public Sprite speedJar;
     public Sprite attackJar;
     public Text currentJarsValue;
-    bool timeJar;
+    bool timeJarSpeed = false;
+    bool timeJarAttack = false;
     float timeJarSec = 15;
     float usingJarDelay=0;
     string nameJar;
@@ -45,17 +47,6 @@ public class PlayerControl : MonoBehaviour
         checkW = false;
     }   
 
-    void TimeJar(string name){
-        // таймер для бафа банок
-        if (timeJarSec >= 0){
-            timeJarSec -= 1 * Time.deltaTime;
-        }
-
-        else {
-             
-        }
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {   
@@ -70,8 +61,31 @@ public class PlayerControl : MonoBehaviour
         //отображение жизней персонажа
         hpbar.value = health;
 
-        //
-        TimeJar(nameJar);
+        // таймер для скорости
+        if (timeJarSpeed && timeJarSec > 0)
+        {
+            timeJarSec -= 1 * Time.deltaTime;
+        }
+
+        else if(timeJarSpeed && timeJarSec <= 0)
+        {
+            timeJarSpeed = false;
+            timeJarSec = 15;
+            speed -= 2;
+        }
+
+        // таймер для атаки
+        if (timeJarAttack && timeJarSec > 0)
+        {
+            timeJarSec -= 1 * Time.deltaTime;
+        }
+
+        else if(timeJarAttack && timeJarSec <= 0)
+        {
+            timeJarAttack = false;
+            timeJarSec = 15;
+            damageJar = 0;
+        }
 
         // задержкжа для подбора оружия и атаки
         if (checkW && pickDelay > 0)
@@ -90,43 +104,62 @@ public class PlayerControl : MonoBehaviour
             usingJarDelay -= 1 * Time.deltaTime;
         }
      
-
+        // банка хп
         if(currentJar.sprite == hpJar)
         {
             currentJarsValue.text = countJar[0].ToString();
             if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[0] >= 1)
             {
                 usingJarDelay = 1;
-                health += 25;
+                health += 40;
                 countJar[0]--;
-
-                timeJar = true;
-                
             }
         }
 
-        if(currentJar.sprite == attackJar)
+        // банка скорости
+        if(currentJar.sprite == speedJar)
         {
             currentJarsValue.text = countJar[1].ToString();
             
+
+            
             if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[1] >= 1)
-            {
-                usingJarDelay = 1;
-                damage += 10;
-                countJar[1]--;
+            {   
+                if (!timeJarSpeed) { // проверка, не используем ли мы в даный момент другую банку
+                    usingJarDelay = 1;
+                    speed += 2;
+                    countJar[1]--;
+
+                    timeJarSpeed = true;
+                } 
+
+                else { // вывод, что вторую использовать сразу нельзя
+                    usingJarDelay = 1;
+                    Debug.Log("исп");
+                }
             }
         }
-
-        if(currentJar.sprite == speedJar)
+        
+        // банка атаки
+        if(currentJar.sprite == attackJar)
         {
             currentJarsValue.text = countJar[2].ToString();
             
             if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[2] >= 1)
-            {
-                usingJarDelay = 1;
-                speed += 2;
-                countJar[2]--;
-            }
+            {    
+                if (!timeJarAttack) {  // проверка, не используем ли мы в даный момент другую банку
+                    usingJarDelay = 1;
+                    damageJar += 10;
+                    countJar[2]--;
+
+                    timeJarAttack = true;
+                }
+
+                else { // вывод, что вторую использовать сразу нельзя
+                    usingJarDelay = 1;
+                    Debug.Log("исп");
+                }
+            }   
         }
 
         // использовния банок
@@ -144,6 +177,7 @@ public class PlayerControl : MonoBehaviour
         {
             currentJar.sprite = attackJar;
         }
+        // использовния банок
     }
 
 
@@ -157,7 +191,7 @@ public class PlayerControl : MonoBehaviour
                     // задержка атаки
                     pickDelay = 0.5f;
 
-                    other.GetComponent<AI>().health -= damage;
+                    other.GetComponent<AI>().health -= damage + damageJar;
                 }
                 
             }
