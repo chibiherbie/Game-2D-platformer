@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CollectCoin : MonoBehaviour
+{
+    bool isPicked = false;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnTriggerStay(Collider other) {
+
+        // сбор монет
+        if (other.CompareTag("Player") && !isPicked) {
+            isPicked = true;
+            other.GetComponent<PlayerControl>().countCoin += 1;
+            Destroy(gameObject);
+        }
+
+        if (other.CompareTag("Player") && !isPicked) {
+            isPicked = true;
+            //other.GetComponent<PlayerControl>().countCoin += 1;
+            Destroy(gameObject);
+        }
+    }
+}
