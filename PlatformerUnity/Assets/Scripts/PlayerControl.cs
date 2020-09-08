@@ -44,9 +44,7 @@ public class PlayerControl : MonoBehaviour
     public Slider speedbar;
     public Slider attackbar;
     public GameObject menuPanel;
-    public GameObject chestText;
     
-
 
     // Start is called before the first frame update
     void Start()
@@ -364,17 +362,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        // открытия сундука
-        if (other.CompareTag("chest")) {
-            // отоброжение информации
-            textSpeed.text = "222";
-            Instantiate(textSpeed, new Vector3(chestText.transform.position.x - 1, chestText.transform.position.y + 5, chestText.transform.position.z + 2), textSpeed.transform.rotation);
-
-
-            if (Input.GetKey(KeyCode.E)){
-                Destroy(chestText);
-            }
-        }
+        
 
 
         if (other.tag == "ground"){  //если в тригере что то есть и у обьекта тег "ground"
@@ -386,6 +374,8 @@ public class PlayerControl : MonoBehaviour
         if (col.tag == "ground") {
             is_ground = false;
         }     //то выключаем переменную "на земле"
+
+        
     }
 
     void Update() {

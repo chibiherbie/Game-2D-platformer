@@ -44,7 +44,7 @@ public class AI : MonoBehaviour
         if (health <= 0) {
 
             // рандомное выпадение бафов
-            if (Random.Range(0, 100) <= 90){
+            if (Random.Range(0, 100) <= 20){
                 randomJars = Random.Range(0, 3);
                 jar = jars[randomJars];
                 Instantiate(jar, new Vector3(gameObject.transform.position.x + Random.Range(0.4f, 1.9f), gameObject.transform.position.y+1, gameObject.transform.position.z + Random.Range(0.4f, 1.9f)), jar.transform.rotation);

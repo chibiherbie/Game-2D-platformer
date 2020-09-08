@@ -10,6 +10,8 @@ TagManager:
   - coin
   - damageForBot
   - wall
+  - chest
+  - chestMessage
   layers:
   - Default
   - TransparentFX
