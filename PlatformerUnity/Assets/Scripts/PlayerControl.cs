@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
-{
+{   
+    public GameObject wall;
     public GameObject platform;
     public GameObject player;
     GameObject weaponNow;
@@ -43,6 +44,8 @@ public class PlayerControl : MonoBehaviour
     public Slider speedbar;
     public Slider attackbar;
     public GameObject menuPanel;
+    public GameObject chestText;
+    
 
 
     // Start is called before the first frame update
@@ -55,6 +58,8 @@ public class PlayerControl : MonoBehaviour
         currentJar.sprite = hpJar;
         currentJarsValue.text = countJar[0].ToString();
         checkW = false;
+
+       
     }   
 
     // Update is called once per frame
@@ -215,33 +220,34 @@ public class PlayerControl : MonoBehaviour
         }
 
         // использовния банок
-        if(Input.GetKey(KeyCode.Alpha1))
+        if(Input.GetKey(KeyCode.Alpha1)) // ХП
         {
             currentJar.sprite = hpJar;
         }
 
-        if(Input.GetKey(KeyCode.Alpha2))
+        if(Input.GetKey(KeyCode.Alpha2)) // скорость
         {
             currentJar.sprite = speedJar;
         }
 
-        if(Input.GetKey(KeyCode.Alpha3))
+        if(Input.GetKey(KeyCode.Alpha3)) // атака
         {
             currentJar.sprite = attackJar;
         }
 
-        // линия, кудакидается оружие
+        // линия, куда кидается оружие (проверка)
         Debug.DrawRay(pointForWeapon.transform.position, pointForWeapon.transform.right * distantionThrow, Color.red);
-
+        Debug.DrawRay(pointForWeapon.transform.position, -pointForWeapon.transform.right * distantionThrow, Color.yellow);
+        
         // бросок оружия
         if (Input.GetKey(KeyCode.G) && is_ground){
             if (currentWeapon != 0) {
                 
-                if (isRight) {
+                // для правой стороны игрока
+                if (isRight) {  
                     Ray ray = new Ray(pointForWeapon.transform.position, pointForWeapon.transform.right * distantionThrow);
                     RaycastHit hit;
-                    
-                    weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
+
                     weaponNow.transform.parent = null;
 
                     if (Physics.Raycast(ray, out hit)){
@@ -249,16 +255,21 @@ public class PlayerControl : MonoBehaviour
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
                             hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
                         }
+                        // определение правой стены
+                        else if (hit.transform.CompareTag("wall")){
+                            wall = GameObject.FindGameObjectWithTag("wall");
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, weaponNow.transform.position.y - 0.5f, weaponNow.transform.position.z);
+                        }
                         else {
-                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 0.5f, hit.transform.position.z);
+                            weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
                         }
                     }
                 }
+                // для левой стороны игрока
                 else {
                     Ray ray = new Ray(pointForWeapon.transform.position, -pointForWeapon.transform.right * distantionThrow);
                     RaycastHit hit;
                     
-                    weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
                     weaponNow.transform.parent = null;
 
                     if (Physics.Raycast(ray, out hit)){
@@ -266,11 +277,15 @@ public class PlayerControl : MonoBehaviour
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
                             hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
                         }
+                        // определение левой стены
+                        else if (hit.transform.CompareTag("wall")){
+                            wall = hit.transform.GetComponent<GameObject>();
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, weaponNow.transform.position.y - 0.5f, weaponNow.transform.position.z);
+                        }
                         else {
-                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 0.5f, hit.transform.position.z);
+                            weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
                         }
                     }
-
                 }
                 
             damage = 5;
@@ -297,61 +312,74 @@ public class PlayerControl : MonoBehaviour
         }
 
         // подбор оружия
-        if (other.CompareTag("weapon") && Input.GetKey(KeyCode.E)){
+        if (other.CompareTag("weapon")){
             // отоброжение характеристик
+            
 
-                
-            if (!checkW) {
-            // смена оружия
-                if (currentWeapon != 0) {
-                    weaponNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
-                    // кручение оружия
-                    //weaponNow.transform.localScale = other.transform.localScale;
-                    weaponNow.transform.parent = null;
-                }
 
-                checkW = true;
-                pickDelay = 0.5f;
+            if (Input.GetKey(KeyCode.E)) {
+                if (!checkW) {
+                // смена оружия
+                    if (currentWeapon != 0) {
+                        weaponNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                        // кручение оружия
+                        //weaponNow.transform.localScale = other.transform.localScale;
+                        weaponNow.transform.parent = null;
+                    }
 
-                currentWeapon = int.Parse(other.name);
-                for (int i=0; i < 10; i++)
-                {
-                    if (i == currentWeapon) {
-                        if (isRight) {
+                    checkW = true;
+                    pickDelay = 0.5f;
 
-                            Vector3 theScale = other.transform.localScale;
-                            theScale.x *= -1;
-                            other.transform.localScale = theScale;
+                    currentWeapon = int.Parse(other.name);
+                    for (int i=0; i < 10; i++)
+                    {
+                        if (i == currentWeapon) {
+                            if (isRight) {
 
-                            other.transform.parent = pointForWeapon;
-                            other.transform.position = pointForWeapon.position;
-                            damage = weaponList[i];
-                            weaponNow = other.gameObject; 
-                            break;
+                                Vector3 theScale = other.transform.localScale;
+                                theScale.x *= -1;
+                                other.transform.localScale = theScale;
+
+                                other.transform.parent = pointForWeapon;
+                                other.transform.position = pointForWeapon.position;
+                                damage = weaponList[i];
+                                weaponNow = other.gameObject; 
+                                break;
+                            }
+                            else {
+                                
+                                Vector3 theScale = other.transform.localScale;
+                                theScale.x *= -1;
+                                other.transform.localScale = theScale;
+
+                                other.transform.parent = pointForWeapon;
+                                other.transform.position = pointForWeapon.position;
+                                damage = weaponList[i];
+                                weaponNow = other.gameObject; 
+                                break;
+                            }
                         }
-                        else {
-                            
-                            Vector3 theScale = other.transform.localScale;
-                            theScale.x *= -1;
-                            other.transform.localScale = theScale;
-
-                            other.transform.parent = pointForWeapon;
-                            other.transform.position = pointForWeapon.position;
-                            damage = weaponList[i];
-                            weaponNow = other.gameObject; 
-                            break;
-                        }
-                        
                     }
                 }
             }
         }
 
-        
+        // открытия сундука
+        if (other.CompareTag("chest")) {
+            // отоброжение информации
+            textSpeed.text = "222";
+            Instantiate(textSpeed, new Vector3(chestText.transform.position.x - 1, chestText.transform.position.y + 5, chestText.transform.position.z + 2), textSpeed.transform.rotation);
+
+
+            if (Input.GetKey(KeyCode.E)){
+                Destroy(chestText);
+            }
+        }
+
 
         if (other.tag == "ground"){  //если в тригере что то есть и у обьекта тег "ground"
             is_ground = true; //то включаем переменную "на земле"
-        }   
+        }  
     }
     
      void OnTriggerExit(Collider col){              //если из триггера что то вышло и у обьекта тег "ground"
