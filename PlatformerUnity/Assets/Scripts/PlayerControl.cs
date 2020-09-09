@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerControl : MonoBehaviour
 {   
@@ -44,6 +45,8 @@ public class PlayerControl : MonoBehaviour
     public Slider speedbar;
     public Slider attackbar;
     public GameObject menuPanel;
+    public GameObject dead;
+    public GameObject finish;
     
 
     // Start is called before the first frame update
@@ -56,8 +59,8 @@ public class PlayerControl : MonoBehaviour
         currentJar.sprite = hpJar;
         currentJarsValue.text = countJar[0].ToString();
         checkW = false;
-
-       
+        Time.timeScale = 1;
+        AudioListener.volume = 1;     
     }   
 
     // Update is called once per frame
@@ -94,6 +97,12 @@ public class PlayerControl : MonoBehaviour
 
         //отображение жизней персонажа
         hpbar.value = health;
+
+        if (health <= 0) {
+            Time.timeScale = 0;
+            dead.SetActive(true);
+            AudioListener.volume = 0;
+        }
 
         // таймер для скорости
         if (timeJarSpeed && timeJarSecS > 0)
@@ -254,6 +263,10 @@ public class PlayerControl : MonoBehaviour
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
                             hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
                         }
+                        else if(hit.transform.CompareTag("wall"))
+                        {
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 1f, hit.transform.position.z);
+                        }
                         else {
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 0.5f, hit.transform.position.z);
                         }
@@ -272,6 +285,10 @@ public class PlayerControl : MonoBehaviour
                         if (hit.transform.CompareTag("Enemies")){
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
                             hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
+                        }
+                        else if(hit.transform.CompareTag("wall"))
+                        {
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 5f, hit.transform.position.z);
                         }
                         else {
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 0.5f, hit.transform.position.z);
@@ -316,7 +333,7 @@ public class PlayerControl : MonoBehaviour
                         // кручение оружия
                         //weaponNow.transform.localScale = other.transform.localScale;
                         weaponNow.transform.parent = null;
-                        
+
                         // изменения слоя
                         weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
                     }
@@ -363,6 +380,13 @@ public class PlayerControl : MonoBehaviour
         if (other.tag == "ground"){  //если в тригере что то есть и у обьекта тег "ground"
             is_ground = true; //то включаем переменную "на земле"
         }  
+
+        //оканчание уровня
+        if (other.CompareTag("finish")){
+            finish.SetActive(true);
+            Time.timeScale = 0;
+        }
+
     }
     
      void OnTriggerExit(Collider col){              //если из триггера что то вышло и у обьекта тег "ground"

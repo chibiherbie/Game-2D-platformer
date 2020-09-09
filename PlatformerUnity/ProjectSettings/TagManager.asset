@@ -12,6 +12,7 @@ TagManager:
   - wall
   - chest
   - chestMessage
+  - finish
   layers:
   - Default
   - TransparentFX

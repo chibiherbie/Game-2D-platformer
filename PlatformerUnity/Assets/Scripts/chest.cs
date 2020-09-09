@@ -28,7 +28,7 @@ public class Chest : MonoBehaviour
 
                 // оружие
                 if (choiseItems == 0){
-                    choiseItems = Random.Range(0, 2);
+                    choiseItems = Random.Range(0, 4);
 
                     GameObject newWeapon = (GameObject)Instantiate(weapon[choiseItems], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 3), weapon[choiseItems].transform.rotation);
                     newWeapon.name = (choiseItems + 1).ToString();

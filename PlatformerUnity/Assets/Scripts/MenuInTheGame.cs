@@ -7,6 +7,8 @@ public class MenuInTheGame : MonoBehaviour
 {
     public GameObject menuPanel;
     public GameObject settings;
+    public GameObject dead;
+    public int currentScene;
     bool settingsIsActive = false;
     // Start is called before the first frame update
     void Start()
@@ -17,11 +19,17 @@ public class MenuInTheGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (settingsIsActive && Input.GetKey(KeyCode.Escape)){
             settings.SetActive(false);
             menuPanel.SetActive(true);
             settingsIsActive = false;
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(currentScene);
     }
 
     public void Resume()
