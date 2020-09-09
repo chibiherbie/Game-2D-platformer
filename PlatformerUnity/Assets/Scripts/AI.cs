@@ -48,13 +48,13 @@ public class AI : MonoBehaviour
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(0, direction.y, direction.z));
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 500 * Time.deltaTime);*/
 
-        if (!player.GetComponent<PlayerControl>().isRight && !isRight && player.transform.position.x < aiSprite.transform.position.x){
+        if (!isRight && player.transform.position.x < aiSprite.transform.position.x){
             Vector3 theScale = aiSprite.transform.localScale;
             theScale.x *= -1;
             aiSprite.transform.localScale = theScale;
             isRight = true;
         }
-        else if (player.GetComponent<PlayerControl>().isRight && isRight && player.transform.position.x > aiSprite.transform.position.x) {
+        else if (isRight && player.transform.position.x > aiSprite.transform.position.x) {
             Vector3 theScale = aiSprite.transform.localScale;
             theScale.x *= -1;
             aiSprite.transform.localScale = theScale;
