@@ -90,7 +90,7 @@ public class AI : MonoBehaviour
             damageBotText.text = demageHealth.ToString();
             lastHealth = health;
             
-            Instantiate(damageBotText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 3, gameObject.transform.position.z + 1), damageBotText.transform.rotation);
+            Instantiate(damageBotText, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5.3f, gameObject.transform.position.z + 3), damageBotText.transform.rotation);
             
         }
 
