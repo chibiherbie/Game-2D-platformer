@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: Game
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 492}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 997
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 492}
   m_MaxSize: {x: 10000, y: 10000}
   m_UseTopView: 1
   m_TopViewHeight: 30
@@ -121,10 +121,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 911, y: 442}
-  m_MaxSize: {x: 22006, y: 10021}
+  m_MinSize: {x: 909, y: 442}
+  m_MaxSize: {x: 22004, y: 10000}
   vertical: 0
-  controlID: 349
+  controlID: 7257
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 382
+  controlID: 7258
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -316,7 +316,7 @@ MonoBehaviour:
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
-  m_MaximizeOnPlay: 0
+  m_MaximizeOnPlay: 1
   m_UseMipMap: 0
   m_VSyncEnabled: 0
   m_Gizmos: 0
@@ -406,9 +406,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 66.933075, y: 17.77979, z: 4.7283945}
+    m_Target: {x: 493, y: 209.5, z: 0}
     speed: 2
-    m_Value: {x: 66.933075, y: 17.77979, z: 4.7283945}
+    m_Value: {x: 493, y: 209.5, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -455,20 +455,20 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.13219172, y: -0.52179813, z: 0.08221988, w: 0.83877397}
+    m_Target: {x: 0.19656757, y: -0.06613916, z: 0.013270515, w: 0.9781936}
     speed: 2
-    m_Value: {x: 0.13218842, y: -0.52178514, z: 0.08221783, w: 0.83875304}
+    m_Value: {x: -0.19656757, y: 0.06613916, z: -0.013270514, w: -0.9781935}
   m_Size:
-    m_Target: 7.054828
+    m_Target: 165.46718
     speed: 2
-    m_Value: 7.054828
+    m_Value: 165.46718
   m_Ortho:
     m_Target: 0
     speed: 2
     m_Value: 0
   m_CameraSettings:
-    m_Speed: 1.06047
-    m_SpeedNormalized: 0.53
+    m_Speed: 1.1804098
+    m_SpeedNormalized: 0.5899999
     m_SpeedMin: 0.001
     m_SpeedMax: 2
     m_EasingEnabled: 1
@@ -514,9 +514,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 66eaffff
-      m_LastClickedID: -5530
-      m_ExpandedIDs: 60fbffff
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: a6c2ffff12c3ffffaac6ffffd0c6ffff52c7ffff44cbffffbecbffff62d5ffffd6d5ffff14dbffff60fbfffff236000088640000c27d0000427f0000e2860000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -578,21 +578,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - "Assets/spritesAndTextures/\u0444\u043E\u043D + \u043F\u043E\u043B + \u0441\u0442\u0435\u043D\u044B"
+    - Assets/Scenes
     m_Globs: []
   m_ViewMode: 1
   m_StartGridSize: 71
   m_LastFolders:
-  - "Assets/spritesAndTextures/\u0444\u043E\u043D + \u043F\u043E\u043B + \u0441\u0442\u0435\u043D\u044B"
+  - Assets/Scenes
   m_LastFoldersGridSize: 71
   m_LastProjectPath: C:\Users\IQ\Documents\Game-2D-platformer\PlatformerUnity
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 643a0000
-    m_LastClickedID: 14948
-    m_ExpandedIDs: 000000003c3a00003e3a0000
+    m_SelectedIDs: 523a0000
+    m_LastClickedID: 14930
+    m_ExpandedIDs: 000000003e3a0000403a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -620,7 +620,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000003c3a00003e3a0000
+    m_ExpandedIDs: 000000003e3a0000403a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -647,8 +647,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 7e420000003a0000fc41000000000000
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: 7e420000fc41000000000000003a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
