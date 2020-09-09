@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        settings.SetActive(false);
     }
 
     // Update is called once per frame
@@ -24,7 +24,8 @@ public class MainMenu : MonoBehaviour
         }
     }
     public void Play()
-    {
+    {   
+        settingsIsActive = false;
         SceneManager.LoadScene(1);
     }
     public void Exit()
