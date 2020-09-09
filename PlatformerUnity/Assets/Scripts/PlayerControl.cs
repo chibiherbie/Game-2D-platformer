@@ -52,7 +52,7 @@ public class PlayerControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
 
         health = 100f;
-        damage = 5f;
+        damage = 2f;
         currentJar.sprite = hpJar;
         currentJarsValue.text = countJar[0].ToString();
         checkW = false;
@@ -246,6 +246,7 @@ public class PlayerControl : MonoBehaviour
                     Ray ray = new Ray(pointForWeapon.transform.position, pointForWeapon.transform.right * distantionThrow);
                     RaycastHit hit;
 
+                    weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
                     weaponNow.transform.parent = null;
 
                     if (Physics.Raycast(ray, out hit)){
@@ -253,21 +254,18 @@ public class PlayerControl : MonoBehaviour
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
                             hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
                         }
-                        // определение правой стены
-                        else if (hit.transform.CompareTag("wall")){
-                            wall = GameObject.FindGameObjectWithTag("wall");
-                            weaponNow.transform.position = new Vector3(hit.transform.position.x, weaponNow.transform.position.y - 0.5f, weaponNow.transform.position.z);
-                        }
                         else {
-                            weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 0.5f, hit.transform.position.z);
                         }
                     }
                 }
+
                 // для левой стороны игрока
                 else {
                     Ray ray = new Ray(pointForWeapon.transform.position, -pointForWeapon.transform.right * distantionThrow);
                     RaycastHit hit;
                     
+                    weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
                     weaponNow.transform.parent = null;
 
                     if (Physics.Raycast(ray, out hit)){
@@ -275,13 +273,8 @@ public class PlayerControl : MonoBehaviour
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
                             hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
                         }
-                        // определение левой стены
-                        else if (hit.transform.CompareTag("wall")){
-                            wall = hit.transform.GetComponent<GameObject>();
-                            weaponNow.transform.position = new Vector3(hit.transform.position.x, weaponNow.transform.position.y - 0.5f, weaponNow.transform.position.z);
-                        }
                         else {
-                            weaponNow.transform.Translate(ray.direction * distantionThrow, Space.World);
+                            weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 0.5f, hit.transform.position.z);
                         }
                     }
                 }
@@ -319,9 +312,13 @@ public class PlayerControl : MonoBehaviour
                 // смена оружия
                     if (currentWeapon != 0) {
                         weaponNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+
                         // кручение оружия
-                        // weaponNow.transform.localScale = other.transform.localScale;
+                        //weaponNow.transform.localScale = other.transform.localScale;
                         weaponNow.transform.parent = null;
+                        
+                        // изменения слоя
+                        weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
                     }
 
                     checkW = true;
@@ -341,6 +338,7 @@ public class PlayerControl : MonoBehaviour
                                 other.transform.position = pointForWeapon.position;
                                 damage = weaponList[i];
                                 weaponNow = other.gameObject; 
+                                weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
                                 break;
                             }
                             else {
@@ -353,6 +351,7 @@ public class PlayerControl : MonoBehaviour
                                 other.transform.position = pointForWeapon.position;
                                 damage = weaponList[i];
                                 weaponNow = other.gameObject; 
+                                weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
                                 break;
                             }
                         }

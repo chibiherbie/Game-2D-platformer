@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpawnEnemies : MonoBehaviour
 {
     public GameObject enemy;
+    bool count = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,10 +19,11 @@ public class SpawnEnemies : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && count)
         {
             Instantiate(enemy, new Vector3(gameObject.transform.position.x, 0.7f, gameObject.transform.position.z + 2f), enemy.transform.rotation);
             Destroy(gameObject);
+            count = false;
         }
     }
 }
