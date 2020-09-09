@@ -2,22 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class chest : MonoBehaviour
+public class Chest : MonoBehaviour
 {
     public GameObject chestMessage;
     bool showTextChest = false;
+    public List<string> itemsInChest;
+    int choiseItems;
+    public List<GameObject> weapon;
+    GameObject player;
     
     // Start is called before the first frame update   
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetKey(KeyCode.E)){
-            Destroy(gameObject);
+    {   
+        if (showTextChest){
+            if (Input.GetKey(KeyCode.E)){
+                Destroy(gameObject);
+                //  выбор варианта действия
+                choiseItems = 0;
+
+                // оружие
+                if (choiseItems == 0){
+                    choiseItems = Random.Range(0, 2);
+
+                    GameObject newWeapon = (GameObject)Instantiate(weapon[choiseItems], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 3), weapon[choiseItems].transform.rotation);
+                    newWeapon.name = (choiseItems + 1).ToString();
+                }
+                // экипировка
+                else if (choiseItems == 1){
+
+                }
+                // проклятья
+                else {
+                    
+                }
+                
+                //Instantiate(jar, new Vector3(gameObject.transform.position.x + Random.Range(0.4f, 1.9f), gameObject.transform.position.y+1, gameObject.transform.position.z + Random.Range(0.4f, 1.9f)), jar.transform.rotation);
+
+            }
         }
     }
 

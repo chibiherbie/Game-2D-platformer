@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Chest.cs" />
      <Compile Include="Assets\Scripts\MenuInTheGame.cs" />
      <Compile Include="Assets\Scripts\CollectJar.cs" />
      <Compile Include="Assets\Scripts\CollectCoin.cs" />
@@ -46,7 +47,7 @@
      <Compile Include="Assets\Scripts\PlayerControl.cs" />
      <Compile Include="Assets\Scripts\TimeTextBonus.cs" />
      <Compile Include="Assets\Scripts\TimeTextDamage.cs" />
-     <Compile Include="Assets\Scripts\chest.cs" />
+     <Compile Include="Assets\Scripts\Music.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

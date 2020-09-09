@@ -305,7 +305,6 @@ public class PlayerControl : MonoBehaviour
 
                     other.GetComponent<AI>().health -= damage + damageJar;
                 }
-                
             }
         }
 
@@ -321,7 +320,7 @@ public class PlayerControl : MonoBehaviour
                     if (currentWeapon != 0) {
                         weaponNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
                         // кручение оружия
-                        //weaponNow.transform.localScale = other.transform.localScale;
+                        // weaponNow.transform.localScale = other.transform.localScale;
                         weaponNow.transform.parent = null;
                     }
 
@@ -362,9 +361,6 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        
-
-
         if (other.tag == "ground"){  //если в тригере что то есть и у обьекта тег "ground"
             is_ground = true; //то включаем переменную "на земле"
         }  
@@ -374,8 +370,6 @@ public class PlayerControl : MonoBehaviour
         if (col.tag == "ground") {
             is_ground = false;
         }     //то выключаем переменную "на земле"
-
-        
     }
 
     void Update() {
