@@ -37,7 +37,7 @@ public class PlayerControl : MonoBehaviour
     float timeJarSecA = 15;
     float usingJarDelay=0;
     string nameJar;
-    bool isRight = true;
+    public bool isRight;
     public float distantionThrow = 15f;
     public TextMesh textSpeed;
     public TextMesh textAttack;
@@ -335,7 +335,7 @@ public class PlayerControl : MonoBehaviour
                         weaponNow.transform.parent = null;
 
                         // изменения слоя
-                        weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                        weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 0;
                     }
 
                     checkW = true;
@@ -355,7 +355,7 @@ public class PlayerControl : MonoBehaviour
                                 other.transform.position = pointForWeapon.position;
                                 damage = weaponList[i];
                                 weaponNow = other.gameObject; 
-                                weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
                                 break;
                             }
                             else {
@@ -368,7 +368,7 @@ public class PlayerControl : MonoBehaviour
                                 other.transform.position = pointForWeapon.position;
                                 damage = weaponList[i];
                                 weaponNow = other.gameObject; 
-                                weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
                                 break;
                             }
                         }
@@ -386,7 +386,6 @@ public class PlayerControl : MonoBehaviour
             finish.SetActive(true);
             Time.timeScale = 0;
         }
-
     }
     
      void OnTriggerExit(Collider col){              //если из триггера что то вышло и у обьекта тег "ground"

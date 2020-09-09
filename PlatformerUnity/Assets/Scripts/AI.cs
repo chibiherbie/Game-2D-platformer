@@ -15,7 +15,7 @@ public class AI : MonoBehaviour
     float atakDelay = 1;
     float timeDamage = 1;
     bool timeDamageForBot;
-    float damage = 10;
+    public float damage;
     int randomJars;
     public GameObject coin;
     public GameObject jar;
@@ -23,19 +23,45 @@ public class AI : MonoBehaviour
     public List<GameObject> jars; 
     public TextMesh damageBotText;
     float demageHealth;
+    bool isLeft = true;
+    public GameObject aiSprite;
+    bool isRight;
+
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        health = 100f;
-        lastHealth = 100f;
+        lastHealth = health;
     }
 
 
     // Update is called once per frame
     void Update()
     {   
+        isLeft = player.GetComponent<PlayerControl>().isRight;
+        // поворот в сторону игрока
+        //transform.LookAt(player.transform);
+
+        
+        /*Vector3 direction = (goal.position - player.transform.position).normalized;
+        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(0, direction.y, direction.z));
+        transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 500 * Time.deltaTime);*/
+
+        if (!player.GetComponent<PlayerControl>().isRight && !isRight && player.transform.position.x < aiSprite.transform.position.x){
+            Vector3 theScale = aiSprite.transform.localScale;
+            theScale.x *= -1;
+            aiSprite.transform.localScale = theScale;
+            isRight = true;
+        }
+        else if (player.GetComponent<PlayerControl>().isRight && isRight && player.transform.position.x > aiSprite.transform.position.x) {
+            Vector3 theScale = aiSprite.transform.localScale;
+            theScale.x *= -1;
+            aiSprite.transform.localScale = theScale;
+            isRight = false;
+        }
+
+
         // ходьба за игроком
         goal = player.transform;
         agent.destination = goal.position;
