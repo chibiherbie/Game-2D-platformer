@@ -4,7 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
-{
+{   
+
+    public GameObject settings;
+    bool settingsIsActive = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +18,10 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (settingsIsActive && Input.GetKey(KeyCode.Escape)){
+            settings.SetActive(false);
+            settingsIsActive = false;
+        }
     }
     public void Play()
     {
@@ -24,4 +31,9 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void Settings() {
+        settingsIsActive = true;
+        settings.SetActive(true);
+    }  
 }
