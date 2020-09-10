@@ -408,7 +408,7 @@ public class PlayerControl : MonoBehaviour
                         headNow.transform.parent = null;
                         
                         // изменения слоя
-                        headNow.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                        headNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
                     }
 
                     checkW = true;
