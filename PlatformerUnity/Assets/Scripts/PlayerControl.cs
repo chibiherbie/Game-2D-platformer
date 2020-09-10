@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject player;
     GameObject weaponNow;
     GameObject headNow;
+    GameObject handNow;
     public Rigidbody rb;
     public Transform pointForWeapon;
     public Transform pountForHead;
@@ -20,10 +21,13 @@ public class PlayerControl : MonoBehaviour
     float maxHealth;
     public float damage;
     int damageJar = 0;
+    int damageHand = 0;
     public int currentWeapon;
     public int currentHead;
+    public int currentHand;
     public List<float> weaponList;
     public List<float> headList;
+    public List<int> handList;
     public Slider hpbar;
     bool is_ground = false; // на земле ли игрок
     public float force = 5;
@@ -277,7 +281,7 @@ public class PlayerControl : MonoBehaviour
                     if (Physics.Raycast(ray, out hit)){
                         if (hit.transform.CompareTag("Enemies")){
                             weaponNow.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 0.7f, hit.transform.position.z);
-                            hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar) * 1.5f;
+                            hit.transform.gameObject.GetComponent<AI>().health -= (damage + damageJar + damageHand) * 1.5f;
                         }
                         else if(hit.transform.CompareTag("wall"))
                         {
@@ -312,7 +316,7 @@ public class PlayerControl : MonoBehaviour
                     }
                 }
                 
-            damage = 5;
+            damage = 2;
             currentWeapon = 0;
             } 
         }
@@ -329,7 +333,7 @@ public class PlayerControl : MonoBehaviour
                     // задержка атаки
                     pickDelay = 0.5f;
 
-                    other.GetComponent<AI>().health -= damage + damageJar;
+                    other.GetComponent<AI>().health -= damage + damageJar + damageHand;
                 }
             }
         }
@@ -393,7 +397,7 @@ public class PlayerControl : MonoBehaviour
             }
         }
 
-        // экипировка
+        // экипировка голова
         if (other.CompareTag("equipment_head")){
             // отоброжение характеристик
             
@@ -439,13 +443,72 @@ public class PlayerControl : MonoBehaviour
                                 theScale.x *= -1;
                                 other.transform.localScale = theScale;
 
+                                maxHealth += headList[i];
                                 hpbar.maxValue = maxHealth;
 
                                 other.transform.parent = pountForHead;
                                 other.transform.position = pountForHead.position;
-                                maxHealth += headList[i];
+                                
                                 headNow = other.gameObject; 
                                 headNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // экипировка рука
+        if (other.CompareTag("equipment_hand")){
+            // отоброжение характеристик
+            
+
+
+            if (Input.GetKey(KeyCode.E)) {
+                if (!checkW) {
+                    // смена браслета
+                    if (currentHand != 0) {
+                        damageHand = 0;
+                        handNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                        handNow.transform.parent = null;
+                        
+                        // изменения слоя
+                        handNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                    }
+
+                    checkW = true;
+                    pickDelay = 0.5f;
+
+                    currentHand = int.Parse(other.name);
+                    for (int i=0; i < 10; i++) {
+                        if (i == currentHand) {
+                            if (isRight) {
+
+                                Vector3 theScale = other.transform.localScale;
+                                theScale.x *= -1;
+                                other.transform.localScale = theScale;
+
+                                other.transform.parent = pountForHead;
+                                other.transform.position = pountForHead.position;
+                                damageHand = handList[i];
+
+                                handNow = other.gameObject; 
+                                handNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                break;
+                            }
+                            else {
+                                
+                                Vector3 theScale = other.transform.localScale;
+                                theScale.x *= -1;
+                                other.transform.localScale = theScale;
+
+                                other.transform.parent = pountForHead;
+                                other.transform.position = pountForHead.position;
+                                damageHand = handList[i];
+
+                                handNow = other.gameObject; 
+                                handNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
                                 break;
                             }
                         }

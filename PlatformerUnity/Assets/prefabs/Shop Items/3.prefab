@@ -94,7 +94,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280672511
 --- !u!1001 &326083201061781226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,6 +102,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4023321899595666471, guid: e1443e4d041681a459198f6b114231c1, type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 3254725361682849173}
     - target: {fileID: 1943956841198798623, guid: e1443e4d041681a459198f6b114231c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.17
@@ -149,6 +153,10 @@ PrefabInstance:
     - target: {fileID: 6927305756304867695, guid: e1443e4d041681a459198f6b114231c1, type: 3}
       propertyPath: m_Name
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6927305756304867695, guid: e1443e4d041681a459198f6b114231c1, type: 3}
+      propertyPath: m_TagString
+      value: weapon_shop
       objectReference: {fileID: 0}
     - target: {fileID: 7444453611173474273, guid: e1443e4d041681a459198f6b114231c1, type: 3}
       propertyPath: m_Sprite

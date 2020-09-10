@@ -94,7 +94,7 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280672511
 --- !u!114 &5196334780926163036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fed7203b1cb9fa45829ccc07e64ac9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 5
+  cost: 35
   costText: {fileID: 7960747337191702905}
 --- !u!1001 &8363258595263060028
 PrefabInstance:
@@ -160,6 +160,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5524844710005216563, guid: 8898ea3fef8d9b94299720ba58fdf894, type: 3}
+      propertyPath: cost
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524844710005216563, guid: 8898ea3fef8d9b94299720ba58fdf894, type: 3}
+      propertyPath: costText
+      value: 
+      objectReference: {fileID: 7960747337191702905}
     - target: {fileID: 7194071511007498507, guid: 8898ea3fef8d9b94299720ba58fdf894, type: 3}
       propertyPath: m_Sprite
       value: 

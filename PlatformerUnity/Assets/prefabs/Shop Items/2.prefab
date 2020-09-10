@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1943956841198798623}
   - component: {fileID: 7444453611173474273}
+  - component: {fileID: -3645448603375897640}
   - component: {fileID: 4107241400453501685}
   m_Layer: 0
   m_Name: 2
-  m_TagString: weapon
+  m_TagString: weapon_shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-3645448603375897640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6927305756304867695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fed7203b1cb9fa45829ccc07e64ac9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 20
+  costText: {fileID: 356306621596287424}
 --- !u!65 &4107241400453501685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -191,4 +206,4 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280672511

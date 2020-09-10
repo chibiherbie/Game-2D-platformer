@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5253828706875648188}
   - component: {fileID: 5788080295728517713}
+  - component: {fileID: 9107876602091964733}
   - component: {fileID: 5287912401161942856}
   m_Layer: 0
   m_Name: 1
-  m_TagString: equipment_head
+  m_TagString: head_shop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -84,6 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9107876602091964733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6034659434333519736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fed7203b1cb9fa45829ccc07e64ac9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 15
+  costText: {fileID: 2661715615722006756}
 --- !u!65 &5287912401161942856
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -191,4 +206,4 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280672511

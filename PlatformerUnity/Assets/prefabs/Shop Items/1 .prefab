@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2679723002793882342}
   - component: {fileID: 2679723002793882343}
   - component: {fileID: 2679723002793882337}
+  - component: {fileID: 1932048198291578033}
   m_Layer: 0
   m_Name: '1 '
   m_TagString: weapon_shop
@@ -97,6 +98,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 14.61, y: 3.91, z: 0.2}
   m_Center: {x: 0.16, y: 0.73, z: 0}
+--- !u!114 &1932048198291578033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2679723002793882340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fed7203b1cb9fa45829ccc07e64ac9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 4
+  costText: {fileID: 4596905053819444191}
 --- !u!1 &3190300370895177175
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +193,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3190300370895177175}
-  m_Text: sadsa
+  m_Text: 10
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -191,4 +206,4 @@ TextMesh:
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4280672511
