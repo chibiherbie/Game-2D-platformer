@@ -128,7 +128,17 @@ MonoBehaviour:
   itemsInChest: []
   weapon:
   - {fileID: 2679723002793882340, guid: 5f1e75b7daaa78547ae7a9c814229f00, type: 3}
-  - {fileID: 2720673045971899769, guid: 4a96e9092d2dc5049ada8a5921a09132, type: 3}
+  - {fileID: 6927305756304867695, guid: e1443e4d041681a459198f6b114231c1, type: 3}
+  - {fileID: 7252133589764046725, guid: 8898ea3fef8d9b94299720ba58fdf894, type: 3}
+  - {fileID: 1203730428011440057, guid: 974b32f222ed67543b73c31c0032add4, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  head:
+  - {fileID: 6034659434333519736, guid: 4f200d994c50b524a9e434993b79deda, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -137,8 +147,18 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  head: []
-  hand: []
+  - {fileID: 0}
+  hand:
+  - {fileID: 6621649678057083254, guid: fa647ab76d66a2949ab5652c3f9f1b78, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &7653645382210510973
 PrefabInstance:
   m_ObjectHideFlags: 0

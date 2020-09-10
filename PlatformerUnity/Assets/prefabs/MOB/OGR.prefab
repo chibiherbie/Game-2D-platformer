@@ -81,6 +81,7 @@ MonoBehaviour:
   - {fileID: 7773900484218816247, guid: bbe8708feb1553e4c88f5941e4bdc94a, type: 3}
   damageBotText: {fileID: 2009921976378645803, guid: 76a04c4443d3d604689c4c2f73bf4f48, type: 3}
   aiSprite: {fileID: 8837450109311128557}
+  getXP: 6
 --- !u!65 &8123536556680279452
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -15,10 +15,11 @@ public class PlayerControl : MonoBehaviour
     public Rigidbody rb;
     public Transform pointForWeapon;
     public Transform pountForHead;
+    public Transform pountForHand;
     public int speed;
     public float health;
     float startHealth;
-    float maxHealth;
+    public float maxHealth;
     public float damage;
     int damageJar = 0;
     int damageHand = 0;
@@ -470,11 +471,12 @@ public class PlayerControl : MonoBehaviour
                     // смена браслета
                     if (currentHand != 0) {
                         damageHand = 0;
+                        handNow.GetComponent<Collider>().enabled = true;
                         handNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
                         handNow.transform.parent = null;
                         
                         // изменения слоя
-                        handNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                        handNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
                     }
 
                     checkW = true;
@@ -489,12 +491,13 @@ public class PlayerControl : MonoBehaviour
                                 theScale.x *= -1;
                                 other.transform.localScale = theScale;
 
-                                other.transform.parent = pountForHead;
-                                other.transform.position = pountForHead.position;
+                                other.transform.parent = pountForHand;
+                                other.transform.position = pountForHand.position;
                                 damageHand = handList[i];
 
                                 handNow = other.gameObject; 
-                                handNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                handNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                                handNow.GetComponent<Collider>().enabled = false;
                                 break;
                             }
                             else {
@@ -503,12 +506,12 @@ public class PlayerControl : MonoBehaviour
                                 theScale.x *= -1;
                                 other.transform.localScale = theScale;
 
-                                other.transform.parent = pountForHead;
-                                other.transform.position = pountForHead.position;
+                                other.transform.parent = pountForHand;
+                                other.transform.position = pountForHand.position;
                                 damageHand = handList[i];
 
                                 handNow = other.gameObject; 
-                                handNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                handNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
                                 break;
                             }
                         }

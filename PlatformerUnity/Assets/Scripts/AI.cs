@@ -26,6 +26,7 @@ public class AI : MonoBehaviour
     bool isLeft = true;
     public GameObject aiSprite;
     bool isRight;
+    public float getXP;
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +69,8 @@ public class AI : MonoBehaviour
 
         // уничтоение врага
         if (health <= 0) {
+            
+            player.GetComponent<skill>().XP += getXP;
 
             // рандомное выпадение бафов
             if (Random.Range(0, 100) <= 20){

@@ -26,7 +26,7 @@ public class Chest : MonoBehaviour
             if (Input.GetKey(KeyCode.E)){
                 Destroy(gameObject);
                 //  выбор варианта действия
-                choiseItems = Random.Range(0, 3);;
+                choiseItems = Random.Range(0, 2);;
 
                 // оружие
                 if (choiseItems == 0){
@@ -44,7 +44,10 @@ public class Chest : MonoBehaviour
                         newHead.name = (choiseItems + 1).ToString();
                     }
                     else{ // hand
+                        choiseItems = Random.Range(0, 1);
 
+                        GameObject newHand = (GameObject)Instantiate(hand[choiseItems], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 3), hand[choiseItems].transform.rotation);
+                        newHand.name = (choiseItems + 1).ToString();
                     }
                 }
                 // проклятья
