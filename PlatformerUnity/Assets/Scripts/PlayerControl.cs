@@ -10,14 +10,20 @@ public class PlayerControl : MonoBehaviour
     public GameObject platform;
     public GameObject player;
     GameObject weaponNow;
+    GameObject headNow;
     public Rigidbody rb;
     public Transform pointForWeapon;
+    public Transform pountForHead;
     public int speed;
     public float health;
+    float startHealth;
+    float maxHealth;
     public float damage;
     int damageJar = 0;
     public int currentWeapon;
+    public int currentHead;
     public List<float> weaponList;
+    public List<float> headList;
     public Slider hpbar;
     bool is_ground = false; // на земле ли игрок
     public float force = 5;
@@ -53,8 +59,9 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
         health = 100f;
+        startHealth = 100f;
+        maxHealth = 100f;
         damage = 2f;
         currentJar.sprite = hpJar;
         currentJarsValue.text = countJar[0].ToString();
@@ -155,13 +162,22 @@ public class PlayerControl : MonoBehaviour
         if(currentJar.sprite == hpJar)
         {
             currentJarsValue.text = countJar[0].ToString();
-            if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[0] >= 1)
+            if(Input.GetKey(KeyCode.Z) && usingJarDelay <= 0 && countJar[0] >= 1 && health < maxHealth)
             {
                 usingJarDelay = 1;
-                health += 35;
-                countJar[0]--;
-
-                textHealth.text = "+35 хп";
+                if(health + 35 < maxHealth)
+                {
+                    health += 35;
+                    countJar[0]--;
+                    textHealth.text = "+35 хп";
+                }    
+                else if (health + 35 >= maxHealth)
+                {
+                    textHealth.text = (maxHealth - health).ToString();
+                    health = maxHealth;
+                    countJar[0]--;
+                }
+                
                 // вывод, сколько прибавилось 
                 Instantiate(textHealth, new Vector3(gameObject.transform.position.x - 1 , gameObject.transform.position.y + 5, gameObject.transform.position.z + 2), textHealth.transform.rotation);
             }
@@ -369,6 +385,67 @@ public class PlayerControl : MonoBehaviour
                                 damage = weaponList[i];
                                 weaponNow = other.gameObject; 
                                 weaponNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // экипировка
+        if (other.CompareTag("equipment_head")){
+            // отоброжение характеристик
+            
+
+
+            if (Input.GetKey(KeyCode.E)) {
+                if (!checkW) {
+                    // смена головного убора
+                    if (currentHead != 0) {
+                        maxHealth = startHealth;
+                        headNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
+                        headNow.transform.parent = null;
+                        
+                        // изменения слоя
+                        headNow.GetComponent<SpriteRenderer>().sortingOrder = 0;
+                    }
+
+                    checkW = true;
+                    pickDelay = 0.5f;
+
+                    currentHead = int.Parse(other.name);
+                    for (int i=0; i < 10; i++) {
+                        if (i == currentHead) {
+                            if (isRight) {
+
+                                Vector3 theScale = other.transform.localScale;
+                                theScale.x *= -1;
+                                other.transform.localScale = theScale;
+
+                                other.transform.parent = pountForHead;
+                                other.transform.position = pountForHead.position;
+                                maxHealth += headList[i];
+
+                                hpbar.maxValue = maxHealth;
+
+                                headNow = other.gameObject; 
+                                headNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                break;
+                            }
+                            else {
+                                
+                                Vector3 theScale = other.transform.localScale;
+                                theScale.x *= -1;
+                                other.transform.localScale = theScale;
+
+                                hpbar.maxValue = maxHealth;
+
+                                other.transform.parent = pountForHead;
+                                other.transform.position = pountForHead.position;
+                                maxHealth += headList[i];
+                                headNow = other.gameObject; 
+                                headNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
                                 break;
                             }
                         }

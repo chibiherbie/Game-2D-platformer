@@ -9,6 +9,8 @@ public class Chest : MonoBehaviour
     public List<string> itemsInChest;
     int choiseItems;
     public List<GameObject> weapon;
+    public List<GameObject> head;
+    public List<GameObject> hand;
     GameObject player;
     
     // Start is called before the first frame update   
@@ -24,7 +26,7 @@ public class Chest : MonoBehaviour
             if (Input.GetKey(KeyCode.E)){
                 Destroy(gameObject);
                 //  выбор варианта действия
-                choiseItems = 0;
+                choiseItems = Random.Range(0, 3);;
 
                 // оружие
                 if (choiseItems == 0){
@@ -35,7 +37,15 @@ public class Chest : MonoBehaviour
                 }
                 // экипировка
                 else if (choiseItems == 1){
+                    if (Random.Range(0, 2) == 0){ // head
+                        choiseItems = Random.Range(0, 1);
 
+                        GameObject newHead = (GameObject)Instantiate(head[choiseItems], new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z - 3), head[choiseItems].transform.rotation);
+                        newHead.name = (choiseItems + 1).ToString();
+                    }
+                    else{ // hand
+
+                    }
                 }
                 // проклятья
                 else {

@@ -13,6 +13,8 @@ TagManager:
   - chest
   - chestMessage
   - finish
+  - equipment_head
+  - equipment_hand
   layers:
   - Default
   - TransparentFX
