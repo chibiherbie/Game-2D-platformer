@@ -15,6 +15,9 @@ TagManager:
   - finish
   - equipment_head
   - equipment_hand
+  - weapon_shop
+  - head_shop
+  - hand_shop
   layers:
   - Default
   - TransparentFX
