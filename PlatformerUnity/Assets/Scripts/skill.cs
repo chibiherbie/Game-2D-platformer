@@ -18,7 +18,7 @@ public class skill : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
-        if (XP == 100){
+        if (XP >= 100){
             if (Input.GetKey(KeyCode.Q)){
                 player.GetComponent<PlayerControl>().health = player.GetComponent<PlayerControl>().maxHealth;
                 XP = 0;

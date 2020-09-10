@@ -411,6 +411,8 @@ public class PlayerControl : MonoBehaviour
                         maxHealth = startHealth;
                         headNow.transform.position = new Vector3(other.transform.position.x, other.transform.position.y, other.transform.position.z);
                         headNow.transform.parent = null;
+                        headNow.GetComponent<Collider>().enabled = true;
+
                         
                         // изменения слоя
                         headNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
@@ -436,6 +438,7 @@ public class PlayerControl : MonoBehaviour
 
                                 headNow = other.gameObject; 
                                 headNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                headNow.GetComponent<Collider>().enabled = false;
                                 break;
                             }
                             else {
@@ -452,6 +455,7 @@ public class PlayerControl : MonoBehaviour
                                 
                                 headNow = other.gameObject; 
                                 headNow.GetComponent<SpriteRenderer>().sortingOrder = 2;
+                                headNow.GetComponent<Collider>().enabled = false;
                                 break;
                             }
                         }
@@ -512,6 +516,7 @@ public class PlayerControl : MonoBehaviour
 
                                 handNow = other.gameObject; 
                                 handNow.GetComponent<SpriteRenderer>().sortingOrder = 1;
+                                handNow.GetComponent<Collider>().enabled = false;
                                 break;
                             }
                         }
