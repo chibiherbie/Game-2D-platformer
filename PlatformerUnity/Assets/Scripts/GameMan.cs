@@ -32,11 +32,11 @@ public class GameMan : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        Debug.LogFormat("Player (0) entered room", newPlayer.NickName);
+        Debug.LogFormat("Player {0} entered room", newPlayer.NickName);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
-        Debug.LogFormat("Player (0) left room", otherPlayer.NickName);
+        Debug.LogFormat("Player {0} left room", otherPlayer.NickName);
     }
 }   
