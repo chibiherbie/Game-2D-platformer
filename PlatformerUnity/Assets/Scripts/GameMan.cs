@@ -6,11 +6,15 @@ using Photon.Pun;
 using Photon.Realtime;
 
 public class GameMan : MonoBehaviourPunCallbacks
-{
+{   
+
+    public GameObject playerPrefab;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        Vector3 position = new Vector3(0, 0, Random.Range(-13, -6));
+        PhotonNetwork.Instantiate(playerPrefab.name, position, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -39,4 +43,6 @@ public class GameMan : MonoBehaviourPunCallbacks
     {
         Debug.LogFormat("Player {0} left room", otherPlayer.NickName);
     }
+
+    
 }   

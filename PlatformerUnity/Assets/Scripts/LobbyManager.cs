@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
+
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -40,6 +42,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Log("Joined the Room");
 
         PhotonNetwork.LoadLevel("Level1");
+    }
+
+    public void play(){
+        SceneManager.LoadScene(4);
     }
 }
 

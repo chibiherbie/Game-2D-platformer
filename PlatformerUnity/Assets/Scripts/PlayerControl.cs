@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class PlayerControl : MonoBehaviour
 {   
@@ -58,7 +59,7 @@ public class PlayerControl : MonoBehaviour
     public GameObject menuPanel;
     public GameObject dead;
     public GameObject finish;
-    
+    PhotonView photonView;
 
     // Start is called before the first frame update
     void Start()
@@ -72,12 +73,16 @@ public class PlayerControl : MonoBehaviour
         currentJarsValue.text = countJar[0].ToString();
         checkW = false;
         Time.timeScale = 1;
-        AudioListener.volume = 1;     
+        AudioListener.volume = 1;
+
+        photonView = GetComponent<PhotonView>();
     }   
 
     // Update is called once per frame
     void FixedUpdate()
-    {   
+    {      
+        if (!photonView.IsMine) return;
+
         if (Input.GetKey(KeyCode.Escape)){
             menuPanel.SetActive(true);
             Time.timeScale = 0;

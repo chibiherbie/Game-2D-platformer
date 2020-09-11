@@ -125,6 +125,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12910}
     - Class: 114
+      Script: {instanceID: 12942}
+    - Class: 114
       Script: {instanceID: 12992}
     - Class: 114
       Script: {instanceID: 13250}
@@ -140,6 +142,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13808}
     - Class: 114
       Script: {instanceID: 13908}
+    - Class: 114
+      Script: {instanceID: 14120}
     - Class: 114
       Script: {instanceID: 14200}
     - Class: 114
@@ -256,6 +260,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
+    - Class: 102
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
@@ -283,6 +289,10 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12616}
     - Class: 114
+      Script: {instanceID: 12696}
+    - Class: 114
+      Script: {instanceID: 12752}
+    - Class: 114
       Script: {instanceID: 12864}
     - Class: 114
       Script: {instanceID: 12942}
@@ -297,6 +307,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13344}
     - Class: 114
+      Script: {instanceID: 13496}
+    - Class: 114
       Script: {instanceID: 13578}
     - Class: 114
       Script: {instanceID: 13600}
@@ -305,11 +317,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13744}
     - Class: 114
+      Script: {instanceID: 13808}
+    - Class: 114
       Script: {instanceID: 14120}
     - Class: 114
       Script: {instanceID: 14216}
     - Class: 114
       Script: {instanceID: 14252}
+    - Class: 114
+      Script: {instanceID: 14280}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -329,6 +345,8 @@ ScriptsOnlyBuild:
     - Class: 198
       Script: {instanceID: 0}
     - Class: 199
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -1633,7 +1651,7 @@ ScriptsOnlyBuild:
     className: IsConnectedAndReadyProperty
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: d1f07c9e64b7817e6271f80bb03de25f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameMan
