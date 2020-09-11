@@ -1,31 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class LobbyManager : Photon.PunBehaviour
+public class LobbyManager : MonoBehaviourPunCallbacks
 {
+    GameObject player;
+    private void Start() {
+        PhotonNetwork.NickName = "Player " + Random.Range(1000, 9000);
+        Debug.Log("Player's name is set to " + PhotonNetwork.NickName);
+
+        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.GameVersion= "v0.1";
+        PhotonNetwork.ConnectUsingSettings();
+    }
     
-    void Awake() 
-    {   
-        print("trying to connect to photon");
-        PhotonNetwork.ConnectUsingSettings("v0.1");
+    private void Log(string message)
+    {
+        Debug.Log(message);
     }
 
     public override void OnConnectedToMaster()
     {   
-        print("Connected to photon");
+        Debug.Log("Connected to Master");
+    }
+
+    public void CreateRoom()
+    {
+        PhotonNetwork.CreateRoom(null, new Photon.Realtime.RoomOptions() { MaxPlayers = 4});
+    }
+
+    public void JoinRoom()
+    {
         PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnJoinedRoom()
     {
-        print("Joined room");
-    }
+        Log("Joined the Room");
 
-    public override void OnPhotonRandomJoinFailed(object[] codeAndMsg)
-    {
-        print("Failed to join room, creating one");
-        PhotonNetwork.CreateRoom(null, new RoomOptions() { MaxPlayers = 4}, TypedLobby.Default);
+        PhotonNetwork.LoadLevel("Level1");
     }
-
 }
+

@@ -12,11 +12,13 @@ public class levelChoise : MonoBehaviour
     public Button lv1;
     public Button lv2;
     public Button lv3;
+    Vector3 startPosition;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPosition = lv1.GetComponent<RectTransform>().position;
+
     }
 
     // Update is called once per frame
@@ -33,8 +35,8 @@ public class levelChoise : MonoBehaviour
     public void left()
     {
         if (count == 1) {
-            lv1.GetComponent<RectTransform>().position = new Vector3(493, 209.5f, 0);
-            lv2.GetComponent<RectTransform>().position = new Vector3(-1210.1f, 0, 0);
+            lv1.GetComponent<RectTransform>().position = startPosition;
+            lv2.GetComponent<RectTransform>().position = new Vector3(-3210.1f, 0, 0);
             count -= 1;
         }
 
@@ -45,8 +47,8 @@ public class levelChoise : MonoBehaviour
         
         
         if (count == 0) {
-            lv1.GetComponent<RectTransform>().position = new Vector3(-1200, 0, 0);
-            lv2.GetComponent<RectTransform>().position = new Vector3(493, 209.5f, 0);
+            lv1.GetComponent<RectTransform>().position = new Vector3(-3200, 0, 0);
+            lv2.GetComponent<RectTransform>().position = startPosition;
             count += 1;
         }
     }
