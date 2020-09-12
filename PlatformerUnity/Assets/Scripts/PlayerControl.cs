@@ -60,6 +60,8 @@ public class PlayerControl : MonoBehaviour
     public GameObject dead;
     public GameObject finish;
     PhotonView photonView;
+    Animator animator;
+    SpriteRenderer sprite;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +76,9 @@ public class PlayerControl : MonoBehaviour
         checkW = false;
         Time.timeScale = 1;
         AudioListener.volume = 1;
+
+        animator = GetComponent<Animator>();
+        sprite = GetComponent<SpriteRenderer>();
 
         photonView = GetComponent<PhotonView>();
     }   
@@ -92,10 +97,16 @@ public class PlayerControl : MonoBehaviour
         coinValue.text = countCoin.ToString();
 
         // передвижение персонажа
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        var v = new Vector3(x, 0.0f, z);
-        transform.position += v * speed * Time.deltaTime;
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)){
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+            var v = new Vector3(x, 0.0f, z);
+            transform.position += v * speed * Time.deltaTime;
+            animator.Play("Player_Run");
+        }
+        else{
+            animator.Play("Player_stay");
+        }
 
         // сторона персонажа
         if (Input.GetKey(KeyCode.D) && !isRight && !Input.GetKey(KeyCode.A)) {
