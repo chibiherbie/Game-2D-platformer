@@ -43,9 +43,5 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         PhotonNetwork.LoadLevel("Level1");
     }
-
-    public void play(){
-        SceneManager.LoadScene(4);
-    }
 }
 

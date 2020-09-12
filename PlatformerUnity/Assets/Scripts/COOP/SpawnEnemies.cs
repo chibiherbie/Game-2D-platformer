@@ -24,8 +24,8 @@ public class SpawnEnemies : MonoBehaviour
         if(spawned < needSpawn && count)
         {
             spawned++;
-            spawnedEnemy = PhotonNetwork.Instantiate(enemy.name, new Vector3(gameObject.transform.position.x, 0.7f, gameObject.transform.position.z + 2f), enemy.transform.rotation);
-            spawnedEnemy.SetActive(true);
+            Instantiate(enemy, new Vector3(gameObject.transform.position.x, 0.7f, gameObject.transform.position.z + 2f), enemy.transform.rotation);
+            
         }
         if(spawned >= needSpawn) 
             Destroy(gameObject);

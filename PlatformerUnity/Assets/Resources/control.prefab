@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7183993839807150861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299861884975169850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21290cda68527a05f8c9e3e8513268a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 0}
+  platform: {fileID: 0}
+  player: {fileID: 8299861884196164684}
+  rb: {fileID: 8299861884975169849}
+  pointForWeapon: {fileID: 0}
+  pountForHead: {fileID: 0}
+  pountForHand: {fileID: 0}
+  speed: 0
+  health: 0
+  maxHealth: 0
+  damage: 0
+  currentWeapon: 0
+  currentHead: 0
+  currentHand: 0
+  weaponList: []
+  headList: []
+  handList: 
+  hpbar: {fileID: 0}
+  force: 5
+  countCoin: 0
+  coinValue: {fileID: 0}
+  countJar: 
+  currentJar: {fileID: 0}
+  hpJar: {fileID: 0}
+  speedJar: {fileID: 0}
+  attackJar: {fileID: 0}
+  currentJarsValue: {fileID: 0}
+  isRight: 0
+  distantionThrow: 15
+  textSpeed: {fileID: 0}
+  textAttack: {fileID: 0}
+  textHealth: {fileID: 0}
+  speedbar: {fileID: 0}
+  attackbar: {fileID: 0}
+  menuPanel: {fileID: 0}
+  dead: {fileID: 0}
+  finish: {fileID: 0}
 --- !u!1 &9189295396792829691
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,5 +248,15 @@ GameObject:
 --- !u!4 &8299861884975169855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 188162363800936403, guid: 7e7ca71956e31a54ab863a894d35619c, type: 3}
+  m_PrefabInstance: {fileID: 8193020535178534636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &8299861884975169849 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 188162363800936405, guid: 7e7ca71956e31a54ab863a894d35619c, type: 3}
+  m_PrefabInstance: {fileID: 8193020535178534636}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8299861884196164684 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 188162362897664672, guid: 7e7ca71956e31a54ab863a894d35619c, type: 3}
   m_PrefabInstance: {fileID: 8193020535178534636}
   m_PrefabAsset: {fileID: 0}

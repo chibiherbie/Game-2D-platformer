@@ -62,7 +62,7 @@ public class PlayerControl : MonoBehaviour
     PhotonView photonView;
     Animator animator;
     SpriteRenderer sprite;
-    Transform Direction;
+    Vector3 Direction;
 
     // Start is called before the first frame update
     void Start()
@@ -87,11 +87,11 @@ public class PlayerControl : MonoBehaviour
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo indo){
         if (stream.IsWriting)
         {
-            stream.SendNext(Direction.localScale);
+            stream.SendNext(Direction);
         }
         else
         {   
-            Direction = (Transform) stream.ReceiveNext();
+            Direction = (Vector3) stream.ReceiveNext();
         }
     }
 
@@ -128,7 +128,7 @@ public class PlayerControl : MonoBehaviour
             Vector3 theScale = gameObject.transform.localScale;
             theScale.x *= -1;
             gameObject.transform.localScale = theScale;
-            Direction = gameObject.transform;
+            Direction = gameObject.transform.localScale;
         }
         
         else if (Input.GetKey(KeyCode.A) && isRight && !Input.GetKey(KeyCode.D)) {
@@ -136,7 +136,7 @@ public class PlayerControl : MonoBehaviour
             Vector3 theScale = gameObject.transform.localScale;
             theScale.x *= -1;
             gameObject.transform.localScale = theScale;
-            Direction = gameObject.transform;
+            Direction = gameObject.transform.localScale;
         }   
 
         //отображение жизней персонажа
