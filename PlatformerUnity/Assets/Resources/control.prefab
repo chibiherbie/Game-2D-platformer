@@ -39,6 +39,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 389683630567187733}
     m_Modifications:
+    - target: {fileID: -972987597590997023, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3466403194881326484, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
+      propertyPath: m_SynchronizeRotation
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5826227427775250026, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
       propertyPath: player
       value: 
@@ -91,7 +99,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -972987597590997023, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
+    - {fileID: 3466403194881326484, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
 --- !u!4 &79135101676142285 stripped
 Transform:
@@ -105,6 +115,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 389683630567187733}
     m_Modifications:
+    - target: {fileID: -7150635453466262242, guid: 7e7ca71956e31a54ab863a894d35619c, type: 3}
+      propertyPath: m_SynchronizeRotation
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 188162363800936403, guid: 7e7ca71956e31a54ab863a894d35619c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

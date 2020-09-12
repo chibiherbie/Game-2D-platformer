@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+
+
 
 public class SpawnEnemies : MonoBehaviour
 {
@@ -20,7 +23,7 @@ public class SpawnEnemies : MonoBehaviour
         if(spawned < needSpawn && count)
         {
             spawned++;
-            Instantiate(enemy, new Vector3(gameObject.transform.position.x, 0.7f, gameObject.transform.position.z + 2f), enemy.transform.rotation);
+            PhotonNetwork.Instantiate(enemy.name, new Vector3(gameObject.transform.position.x, 0.7f, gameObject.transform.position.z + 2f), Quaternion.identity);
         }
         if(spawned >= needSpawn) 
             Destroy(gameObject);
