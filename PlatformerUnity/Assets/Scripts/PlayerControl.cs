@@ -62,6 +62,7 @@ public class PlayerControl : MonoBehaviour
     PhotonView photonView;
     Animator animator;
     SpriteRenderer sprite;
+    Transform Direction;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +83,17 @@ public class PlayerControl : MonoBehaviour
 
         photonView = GetComponent<PhotonView>();
     }   
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo indo){
+        if (stream.IsWriting)
+        {
+            stream.SendNext(Direction.localScale);
+        }
+        else
+        {   
+            Direction = (Transform) stream.ReceiveNext();
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -104,16 +116,19 @@ public class PlayerControl : MonoBehaviour
             transform.position += v * speed * Time.deltaTime;
             animator.Play("Player_Run");
         }
+
         else{
             animator.Play("Player_stay");
         }
 
         // сторона персонажа
         if (Input.GetKey(KeyCode.D) && !isRight && !Input.GetKey(KeyCode.A)) {
+            
             isRight = true;
             Vector3 theScale = gameObject.transform.localScale;
             theScale.x *= -1;
             gameObject.transform.localScale = theScale;
+            Direction = gameObject.transform;
         }
         
         else if (Input.GetKey(KeyCode.A) && isRight && !Input.GetKey(KeyCode.D)) {
@@ -121,6 +136,7 @@ public class PlayerControl : MonoBehaviour
             Vector3 theScale = gameObject.transform.localScale;
             theScale.x *= -1;
             gameObject.transform.localScale = theScale;
+            Direction = gameObject.transform;
         }   
 
         //отображение жизней персонажа
@@ -337,6 +353,10 @@ public class PlayerControl : MonoBehaviour
             currentWeapon = 0;
             } 
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) & is_ground) {        //если нажата кнопка "пробел" и игрок на земле
+            rb.AddForce(Vector3.up * force, ForceMode.Impulse);   //то придаем ему силу вверх импульсным пинком
+        }
     }
 
 
@@ -543,7 +563,7 @@ public class PlayerControl : MonoBehaviour
 
         if (other.tag == "ground"){  //если в тригере что то есть и у обьекта тег "ground"
             is_ground = true; //то включаем переменную "на земле"
-        }  
+        }
 
         //оканчание уровня
         if (other.CompareTag("finish")){
@@ -556,11 +576,5 @@ public class PlayerControl : MonoBehaviour
         if (col.tag == "ground") {
             is_ground = false;
         }     //то выключаем переменную "на земле"
-    }
-
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.Space) & is_ground) {        //если нажата кнопка "пробел" и игрок на земле
-            rb.AddForce(Vector3.up * force, ForceMode.Impulse);   //то придаем ему силу вверх импульсным пинком
-        }
     }
 }

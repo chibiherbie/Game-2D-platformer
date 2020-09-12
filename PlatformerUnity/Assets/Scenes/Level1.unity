@@ -1297,7 +1297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff17f9a329860f448d68643b1d53d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7873740109892629057, guid: 0e17f28217cc8d94c97ac4ddaeb61e56, type: 3}
+  enemy: {fileID: 785795175585292498, guid: a2dbba1402d26a84797d8c7122b8d168, type: 3}
   needSpawn: 1
 --- !u!1 &1332011129
 GameObject:
@@ -1495,7 +1495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ff17f9a329860f448d68643b1d53d35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 7873740109892629057, guid: 0e17f28217cc8d94c97ac4ddaeb61e56, type: 3}
+  enemy: {fileID: 785795175585292498, guid: a2dbba1402d26a84797d8c7122b8d168, type: 3}
   needSpawn: 2
 --- !u!65 &1364652190
 BoxCollider:

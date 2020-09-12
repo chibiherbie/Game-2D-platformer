@@ -41,7 +41,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -972987597590997023, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
       propertyPath: ObservedComponents.Array.size
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -972987597590997023, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
+      propertyPath: ObservedComponents.Array.data[0]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3466403194881326484, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
       propertyPath: m_SynchronizeRotation
@@ -99,9 +103,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -972987597590997023, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
-    - {fileID: 3466403194881326484, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22410e6277c2b9f43845224485fa550a, type: 3}
 --- !u!4 &79135101676142285 stripped
 Transform:

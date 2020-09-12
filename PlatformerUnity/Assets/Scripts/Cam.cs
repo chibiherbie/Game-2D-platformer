@@ -26,13 +26,13 @@ public class Cam : MonoBehaviour
         // правая граница крана тригера для камеры
         screenScript_R = Screen.width / 2 + Screen.width / 2 / 100 * 60;
 
-        photonView = GetComponent<PhotonView>();
+        //photonView = GetComponent<PhotonView>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {   
-        if (!photonView.IsMine) {
+        //if (!photonView.IsMine) {
 
             // левая сторона экрана
             if (player.transform.position.x - gameObject.transform.position.x <= -6f) {
@@ -42,7 +42,7 @@ public class Cam : MonoBehaviour
             // правая сторона экрана
             if (player.transform.position.x - gameObject.transform.position.x >= 6f) {
                 gameObject.transform.position = new Vector3(player.transform.position.x - 6f, camY, camZ);
-            }
+            //}
         }
     }
 }

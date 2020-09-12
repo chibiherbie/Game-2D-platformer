@@ -8,6 +8,7 @@ using Photon.Pun;
 public class SpawnEnemies : MonoBehaviour
 {
     public GameObject enemy;
+    GameObject spawnedEnemy;
     int spawned;
     public int needSpawn;
     bool count = false;
@@ -23,7 +24,8 @@ public class SpawnEnemies : MonoBehaviour
         if(spawned < needSpawn && count)
         {
             spawned++;
-            PhotonNetwork.Instantiate(enemy.name, new Vector3(gameObject.transform.position.x, 0.7f, gameObject.transform.position.z + 2f), Quaternion.identity);
+            spawnedEnemy = PhotonNetwork.Instantiate(enemy.name, new Vector3(gameObject.transform.position.x, 0.7f, gameObject.transform.position.z + 2f), enemy.transform.rotation);
+            spawnedEnemy.SetActive(true);
         }
         if(spawned >= needSpawn) 
             Destroy(gameObject);

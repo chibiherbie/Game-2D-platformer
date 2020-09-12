@@ -43,6 +43,7 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     - UnityEditor.Graphs.AnimatorControllerTool
@@ -305,13 +306,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12864}
     - Class: 114
+      Script: {instanceID: 12894}
+    - Class: 114
       Script: {instanceID: 12942}
+    - Class: 114
+      Script: {instanceID: 12992}
     - Class: 114
       Script: {instanceID: 13084}
     - Class: 114
       Script: {instanceID: 13162}
     - Class: 114
       Script: {instanceID: 13242}
+    - Class: 114
+      Script: {instanceID: 13250}
     - Class: 114
       Script: {instanceID: 13332}
     - Class: 114
@@ -333,6 +340,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 14120}
     - Class: 114
+      Script: {instanceID: 14200}
+    - Class: 114
       Script: {instanceID: 14216}
     - Class: 114
       Script: {instanceID: 14252}
@@ -351,6 +360,8 @@ ScriptsOnlyBuild:
     - Class: 143
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 195
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
@@ -438,8 +449,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12992}
     - Class: 114
-      Script: {instanceID: 13250}
-    - Class: 114
       Script: {instanceID: 13378}
     - Class: 114
       Script: {instanceID: 13454}
@@ -450,8 +459,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13808}
     - Class: 114
-      Script: {instanceID: 14200}
-    - Class: 114
       Script: {instanceID: 14216}
     - Class: 115
       Script: {instanceID: 0}
@@ -460,8 +467,6 @@ ScriptsOnlyBuild:
     - Class: 134
       Script: {instanceID: 0}
     - Class: 157
-      Script: {instanceID: 0}
-    - Class: 195
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
