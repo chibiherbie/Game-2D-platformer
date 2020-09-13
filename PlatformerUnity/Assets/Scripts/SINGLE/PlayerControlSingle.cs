@@ -84,7 +84,7 @@ public class PlayerControlSingle : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {      
-        if (Input.GetKey(KeyCode.Escape)){
+        if (Input.GetKey(KeyCode.Escape)){  
             menuPanel.SetActive(true);
             Time.timeScale = 0;
         }

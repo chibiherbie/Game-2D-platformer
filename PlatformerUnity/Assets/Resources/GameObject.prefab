@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 188162363800936403}
   - component: {fileID: 188162363800936404}
   - component: {fileID: 188162363800936405}
+  - component: {fileID: 5634739702549715266}
   - component: {fileID: 188162363800936400}
   - component: {fileID: 188162363800936401}
   - component: {fileID: -2961467822413961415}
@@ -255,6 +256,55 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &5634739702549715266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188162363800936406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21290cda68527a05f8c9e3e8513268a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 0}
+  platform: {fileID: 0}
+  player: {fileID: 0}
+  rb: {fileID: 0}
+  pointForWeapon: {fileID: 0}
+  pountForHead: {fileID: 0}
+  pountForHand: {fileID: 0}
+  speed: 0
+  health: 0
+  maxHealth: 0
+  damage: 0
+  currentWeapon: 0
+  currentHead: 0
+  currentHand: 0
+  weaponList: []
+  headList: []
+  handList: 
+  hpbar: {fileID: 0}
+  force: 5
+  countCoin: 0
+  coinValue: {fileID: 0}
+  countJar: 
+  currentJar: {fileID: 0}
+  hpJar: {fileID: 0}
+  speedJar: {fileID: 0}
+  attackJar: {fileID: 0}
+  currentJarsValue: {fileID: 0}
+  isRight: 0
+  distantionThrow: 15
+  textSpeed: {fileID: 0}
+  textAttack: {fileID: 0}
+  textHealth: {fileID: 0}
+  speedbar: {fileID: 0}
+  attackbar: {fileID: 0}
+  menuPanel: {fileID: 0}
+  dead: {fileID: 0}
+  finish: {fileID: 0}
 --- !u!114 &188162363800936400
 MonoBehaviour:
   m_ObjectHideFlags: 0

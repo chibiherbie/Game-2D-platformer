@@ -16,6 +16,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.GameVersion= "v0.1";
         PhotonNetwork.ConnectUsingSettings();
     }
+
+    private void Update() {
+        if (Input.GetKey(KeyCode.Escape)){
+            SceneManager.LoadScene(2);
+        }
+    }
     
     private void Log(string message)
     {

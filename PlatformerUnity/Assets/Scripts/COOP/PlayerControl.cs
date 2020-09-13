@@ -62,7 +62,6 @@ public class PlayerControl : MonoBehaviour
     PhotonView photonView;
     Animator animator;
     SpriteRenderer sprite;
-    Vector3 Direction;
 
     // Start is called before the first frame update
     void Start()
@@ -84,17 +83,6 @@ public class PlayerControl : MonoBehaviour
         photonView = GetComponent<PhotonView>();
     }   
 
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo indo){
-        if (stream.IsWriting)
-        {
-            stream.SendNext(Direction);
-        }
-        else
-        {   
-            Direction = (Vector3) stream.ReceiveNext();
-        }
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {      
@@ -104,7 +92,6 @@ public class PlayerControl : MonoBehaviour
             menuPanel.SetActive(true);
             Time.timeScale = 0;
         }
-
 
         coinValue.text = countCoin.ToString();
 
@@ -123,12 +110,10 @@ public class PlayerControl : MonoBehaviour
 
         // сторона персонажа
         if (Input.GetKey(KeyCode.D) && !isRight && !Input.GetKey(KeyCode.A)) {
-            
             isRight = true;
             Vector3 theScale = gameObject.transform.localScale;
             theScale.x *= -1;
             gameObject.transform.localScale = theScale;
-            Direction = gameObject.transform.localScale;
         }
         
         else if (Input.GetKey(KeyCode.A) && isRight && !Input.GetKey(KeyCode.D)) {
@@ -136,7 +121,6 @@ public class PlayerControl : MonoBehaviour
             Vector3 theScale = gameObject.transform.localScale;
             theScale.x *= -1;
             gameObject.transform.localScale = theScale;
-            Direction = gameObject.transform.localScale;
         }   
 
         //отображение жизней персонажа
