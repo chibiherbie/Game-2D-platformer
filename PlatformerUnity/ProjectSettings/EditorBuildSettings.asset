@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/lvlChoise.unity
     guid: e32174d5efa5bad4184702fce8d44d86
   - enabled: 1
-    path: Assets/Scenes/choiseGame.unity
-    guid: 6dde09177c1463f45a0b0c3e6e4f2fe8
+    path: Assets/Scenes/ChoiseGame.unity
+    guid: 1cbc92407e984974a90253ca858a5259
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 62660f82017c5154a8046252baf8b6e9
@@ -21,8 +21,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Level1.unity
     guid: 3ddf2e59cc8f952408855626803419ab
   - enabled: 1
-    path: Assets/Scenes/Level1 - Single.unity
-    guid: 19dd0afadb9be4047b5e07168dfb72a4
+    path: Assets/Scenes/Level1_coop.unity
+    guid: 2d26a1d4a41fdad46b6258206faf7bb3
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab

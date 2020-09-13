@@ -52,5 +52,5 @@ public class MenuInTheGame : MonoBehaviour
         settingsIsActive = true;
         settings.SetActive(true);
         menuPanel.SetActive(false);
-    }    
+    } 
 }

@@ -95,7 +95,7 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4280672511
---- !u!114 &5196334780926163036
+--- !u!114 &7440363135195822270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fed7203b1cb9fa45829ccc07e64ac9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 35
+  cost: 45
   costText: {fileID: 7960747337191702905}
 --- !u!1001 &8363258595263060028
 PrefabInstance:
@@ -180,7 +180,8 @@ PrefabInstance:
       propertyPath: m_TagString
       value: weapon_shop
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2327389243460047238, guid: 8898ea3fef8d9b94299720ba58fdf894, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8898ea3fef8d9b94299720ba58fdf894, type: 3}
 --- !u!1 &1203730428011440057 stripped
 GameObject:
