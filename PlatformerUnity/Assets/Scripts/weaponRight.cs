@@ -18,9 +18,9 @@ public class weaponRight : MonoBehaviour
         if(transform.parent == pointForWeapon)
             gameObject.transform.position = pointForWeapon.transform.position;
             
-        if (transform.parent.GetComponent<PlayerControl>().weaponNow == gameObject){
-            if (FindObjectOfType<PlayerControl>().isRight) isRightW = true;
-            else isRightW = false;
-        }
+        //if (transform.parent.GetComponent<PlayerControl>().weaponNow == gameObject){
+          //  if (FindObjectOfType<PlayerControl>().isRight) isRightW = true;
+            //else isRightW = false;
+        //}
     }
 }
