@@ -629,6 +629,9 @@
     <Reference Include="Unity.Timeline.Editor">
         <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Animation.Runtime">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -641,14 +644,47 @@
     <Reference Include="Unity.Timeline">
         <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Animation.Triangle.Runtime">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PsdPlugin">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Sprite.Editor">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Editor">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
         <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
         <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Editor">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+        <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>D:/Program Files (x86)/trash/програмирование/UNITY/Game-2D-platformer/PlatformerUnity/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>

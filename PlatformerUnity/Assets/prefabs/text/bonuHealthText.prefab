@@ -57,7 +57,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6764094802805676668, guid: fab7ffa2cfc70c6498c2f5a9a4569b0b, type: 3}
       propertyPath: m_Text
-      value: 6
+      value: "+35 \u0445\u043F"
       objectReference: {fileID: 0}
     - target: {fileID: 6764094802805676668, guid: fab7ffa2cfc70c6498c2f5a9a4569b0b, type: 3}
       propertyPath: m_Color.rgba

@@ -77,7 +77,7 @@ public class PlayerControl : MonoBehaviour
         Time.timeScale = 1;
         AudioListener.volume = 1;    
 
-        anim = GetComponent<Animator>(); 
+        anim = GetComponentInChildren<Animator>();
     }   
 
     // Update is called once per frame
@@ -344,18 +344,21 @@ public class PlayerControl : MonoBehaviour
 
     private void OnTriggerStay(Collider other) {
         // атака врага
-        if (other.tag == "Enemies") {
-            if (Input.GetKey(KeyCode.F)) {
+        
+            if (Input.GetKey(KeyCode.F) && is_ground) {
                 if (!checkW ) {
 
                     checkW = true;
                     // задержка атаки
                     pickDelay = 0.5f;
+                    anim.SetTrigger("Attack");
 
-                    other.GetComponent<AI>().health -= damage + damageJar + damageHand;
+                    if (other.tag == "Enemies") {
+                        other.GetComponent<AI>().health -= damage + damageJar + damageHand;
+                    }
                 }
             }
-        }
+        
 
         // подбор оружия
         if (other.CompareTag("weapon")){
@@ -548,13 +551,14 @@ public class PlayerControl : MonoBehaviour
     
      void OnTriggerExit(Collider col){              //если из триггера что то вышло и у обьекта тег "ground"
         if (col.tag == "ground") {
-            is_ground = false;
-        }     //то выключаем переменную "на земле"
+            is_ground = false;  //то выключаем переменную "на земле"
+            anim.SetTrigger("Jumping");
+        }    
     }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Space) & is_ground) {        //если нажата кнопка "пробел" и игрок на земле
-            rb.AddForce(Vector3.up * force, ForceMode.Impulse);   //то придаем ему силу вверх импульсным пинком
+            rb.AddForce(Vector3.up * force, ForceMode.Impulse);  //то придаем ему силу вверх импульсным пинком
         }
     }
 }
